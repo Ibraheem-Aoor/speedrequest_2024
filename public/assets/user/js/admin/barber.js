@@ -115,10 +115,21 @@ $('#platform-modal').on('show.bs.modal', function (e) {
         $("#modal-title").text(btn.getAttribute('data-header-title'));
         $('.image-input-wrapper').css('background-image', 'url("' + btn.getAttribute('data-image') + '")');
         $('form[name="service-form"]')[0].reset();
+        // Get the file input element
+        var fileInput = document.getElementById('changeImg');
+
+        // Reset the file input by clearing its value
+        fileInput.value = null;
     } else {
+         // Get the file input element
+         var fileInput = document.getElementById('changeImg');
+
+         // Reset the file input by clearing its value
+         fileInput.value = null;
         $("#modal-title").text(btn.getAttribute('data-header-title'));
         $('.image-input-wrapper').css('background-image', 'url("' + btn.getAttribute('data-image') + '")');
         $(this).find('#name').val(btn.getAttribute('data-name'));
+        $(this).find('#order').val(btn.getAttribute('data-order'));
         var status = btn.getAttribute('data-status') == 1 ? 'checked' : null;
         $(this).find('#status').prop('checked', status);
     }

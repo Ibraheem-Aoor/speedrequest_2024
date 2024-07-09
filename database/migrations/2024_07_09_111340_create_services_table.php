@@ -17,7 +17,7 @@ return new class extends Migration {
             $table->text('name');
             $table->longText('features');
             $table->text('offer_url');
-            $table->boolean('is_published');
+            $table->string('task_title');
             $table->unsignedBigInteger('platform_id');
             $table->foreign('platform_id')->references('id')->on('platforms')->onDelete('cascade');
             $table->boolean('status')->default(1);

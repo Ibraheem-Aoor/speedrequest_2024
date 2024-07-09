@@ -35,13 +35,13 @@ class PlatformController extends BaseAdminController
     }
     public function update($id , UpdateBarberRequest $request)
     {
-        Cache::forget('barbers');
+        Cache::forget('platforms');
         return $this->service->update(decrypt($id) , $request);
     }
 
     public function destroy($id)
     {
-        Cache::forget('barbers');
+        Cache::forget('platforms');
         return $this->service->delete(decrypt($id));
     }
 

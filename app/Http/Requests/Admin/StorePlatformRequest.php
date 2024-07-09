@@ -17,6 +17,7 @@ class StorePlatformRequest extends BaseAdminRequest
         return [
             'image' => ['required', 'image'],
             'name' => ['required', 'string'],
+            'order' => ['required', 'numeric'],
         ];
     }
 }

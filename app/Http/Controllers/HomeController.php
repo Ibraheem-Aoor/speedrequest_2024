@@ -5,10 +5,12 @@ namespace App\Http\Controllers;
 use App\Mail\TestMail;
 use App\Models\Barber;
 use App\Models\Page;
+use App\Models\Platform;
 use App\Models\Service;
 use App\Models\Setting;
 use App\Models\Webshop;
 use App\Models\WorkHours;
+use App\Services\PlatformService;
 use Illuminate\Contracts\View\View;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
@@ -18,7 +20,7 @@ class HomeController extends BaseSiteContoller
 {
 
     public $services, $barbers, $about_page;
-    public function __construct()
+    public function __construct(protected PlatformService $platform_service)
     {
         $this->page_title = __('site.home');
         $this->base_view_path = "site.";
@@ -31,6 +33,7 @@ class HomeController extends BaseSiteContoller
      */
     public function index(): View
     {
+        $data['platforms'] = cacheAndGet('platforms', now()->addWeek(), $this->platform_service->get(paginate:0 , filters:['status' => '1'] , order:['order' , 'asc']));
         $data['page_title'] = $this->page_title;
         return view($this->base_view_path . 'home', $data);
     }

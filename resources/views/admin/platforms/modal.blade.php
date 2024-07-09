@@ -40,6 +40,16 @@
                                 </div><!--end col-->
                                 <div class="col-md-12">
                                     <div class="mb-3">
+                                        <label class="form-label">{{ __('general.order') }}<span
+                                                class="text-danger">*</span></label>
+                                        <div class="form-icon position-relative">
+                                            <input type="number" name="order" id="order" required
+                                                class="form-control">
+                                        </div>
+                                    </div>
+                                </div><!--end col-->
+                                <div class="col-md-12">
+                                    <div class="mb-3">
                                         <label class="form-label">{{ __('general.status') }}</label>
                                         <div class="form-check form-switch">
                                             <input class="form-check-input" type="checkbox" id="status"

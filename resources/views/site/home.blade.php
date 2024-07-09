@@ -1,10 +1,17 @@
 @extends('layouts.site.master')
 @section('title', $page_title)
 @push('css')
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Baskervville+SC&display=swap" rel="stylesheet" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Anton+SC&display=swap" rel="stylesheet" />
     <style>
         /**
-                      -- Start Import Fonts
-                    **/
+                                  -- Start Import Fonts
+                                **/
         .baskervville-sc-regular {
             font-family: "Baskervville SC", serif;
             font-weight: 400;
@@ -18,8 +25,8 @@
         }
 
         /*
-                      -- End Import Fonts
-                    */
+                                  -- End Import Fonts
+                                */
 
         * {
             padding: 0;
@@ -341,10 +348,10 @@
         }
 
         /* ----------------------------------------------
-                * ----------------------------------------
-                * animation flip-vertical-left
-                * ----------------------------------------
-                */
+                            * ----------------------------------------
+                            * animation flip-vertical-left
+                            * ----------------------------------------
+                            */
         @-webkit-keyframes flip-vertical-left {
             0% {
                 -webkit-transform: rotateY(0);
@@ -374,39 +381,85 @@
             background: linear-gradient(to bottom right, #34a853, #228b22);
         }
 
-        #google-card .btn-light {
+        #google-card .btn {
             background: linear-gradient(to bottom right, #34a853, #228b22);
+            color: white;
         }
 
         #instagram-card::before {
             background: linear-gradient(to bottom right, #833ab4, #c13584);
         }
 
-        #instagram-card .btn-light {
+        #instagram-card .btn {
             background: linear-gradient(to bottom right, #833ab4, #c13584);
+            color: white;
         }
 
         #tiktok-card::before {
             background: linear-gradient(to bottom right, #ff0000, #5800ff);
         }
 
-        #tiktok-card .btn-light {
+        #tiktok-card .btn {
             background: linear-gradient(to bottom right, #ff0000, #5800ff);
+            color: white;
         }
 
         #fb-card::before {
             background: linear-gradient(to bottom right, #1877f2, #04a6eb);
         }
 
-        #fb-card .btn-light {
+        #fb-card .btn {
             background: linear-gradient(to bottom right, #1877f2, #04a6eb);
+            color: white;
+        }
+
+        #pubg-card::before {
+            background: linear-gradient(135deg, #0d1a2b, #ffc600) !important;
+        }
+
+        #pubg-card .btn {
+            background: linear-gradient(135deg, #0d1a2b, #ffc600) !important;
+            color: white;
+        }
+
+        #freefire-card::before {
+            background: linear-gradient(135deg, #FF9500, #222222);
+        }
+
+        #freefire-card .btn {
+            background: linear-gradient(135deg, #FF9500, #222222);
+            color: white;
+        }
+
+        #twitter-card::before {
+            background: linear-gradient(135deg, #1DA1F2, #ffffff);
+        }
+
+        #twitter-card .btn {
+            background: linear-gradient(135deg, #1DA1F2, #ffffff);
+            color: white;
         }
 
         #snapchat-card::before {
             background: linear-gradient(to bottom right, #fffc00, #ff0000);
         }
 
-        #snapchat-card .btn-light {
+        #snapchat-card .btn {
+            background: linear-gradient(to bottom right, #fffc00, #ff0000);
+            color: white;
+        }
+
+        #telegram-card::before {
+            background: linear-gradient(135deg, #0088cc, #ffffff);
+        }
+
+        #telegram-card .btn {
+            background: linear-gradient(135deg, #0088cc, #ffffff);
+            color: white;
+        }
+
+
+        #snapchat-card .btn {
             background: linear-gradient(to bottom right, #fffc00, #ff0000);
         }
 
@@ -414,38 +467,10 @@
             background: linear-gradient(to bottom right, #ff0000, #ff4500);
         }
 
-        #youtube-card .btn-light {
+        #youtube-card .btn {
             background: linear-gradient(to bottom right, #ff0000, #ff4500);
         }
 
-        /* Modal Header and Colors */
-        .modal-header.instagram,
-        .modal-footer.instagram {
-            background: linear-gradient(to bottom right, #833ab4, #fd1d1d, #fcb045);
-        }
-
-        /* Additional Modals for YouTube and Snapchat if needed */
-        .modal-header.youtube,
-        .modal-footer.youtube {
-            background: #ff0000;
-            /* Use YouTube's red color */
-        }
-
-        .modal-header.snapchat,
-        .modal-footer.snapchat {
-            background: #fffc00;
-            /* Use Snapchat's yellow color */
-        }
-
-        .modal-header.google,
-        .modal-footer.google {
-            background: linear-gradient(to bottom right, #34a853, #228b22);
-        }
-
-        .modal-header.tiktok,
-        .modal-footer.tiktok {
-            background: linear-gradient(to bottom right, #ff0000, #5800ff);
-        }
 
         .btn-google {
             background: linear-gradient(to bottom right, #34a853, #228b22);
@@ -471,8 +496,28 @@
 
         .btn-tiktok {
             background: linear-gradient(to bottom right, #ff0000, #5800ff);
-
             color: white;
+        }
+
+        .btn-pubg {
+            background: linear-gradient(135deg, #0d1a2b, #ffc600) !important;
+            color: white !important;
+        }
+
+        .btn-freefire {
+            color: white !important;
+            background: linear-gradient(135deg, #FF9500, #222222);
+
+        }
+
+        .btn-twitter {
+            background: linear-gradient(135deg, #1DA1F2, #ffffff);
+            color: white !important;
+        }
+
+        .btn-twitter {
+            background: linear-gradient(135deg, #0088cc, #ffffff);
+            color: white !important;
         }
 
         .step-number {
@@ -516,46 +561,18 @@
         <div class="right">
             <div class="apps">
                 <h1 class="mt-5 anton-sc-regular"><b>Supported Apps:</b></h1>
-                <div class="app-card full-width" id="google-card">
-                    <div class="img-container">
-                        <img loading="lazy" class="image-fluid flip-vertical-left"
-                            src="{{ asset('assets/site/img/google-play.png') }}" alt="Google Play" />
+                @foreach ($platforms as $platform)
+                    <div class="app-card @if ($loop->first) full-width @endif"
+                        id="{{ $platform->getCardId() }}">
+                        <div class="img-container">
+                            <img loading="lazy" class="image-fluid flip-vertical-left"
+                                src="{{ getImageUrl($platform->logo) }}" alt="Google Play" />
+                        </div>
+                        <div class="card-title">{{ $platform->name }}</div>
+                        <a href="#" class="btn btn-light" data-toggle="modal" data-target="#googleModal">Start</a>
                     </div>
-                    <div class="card-title">Google Play</div>
-                    <a href="#" class="btn btn-light" data-toggle="modal" data-target="#googleModal">Start</a>
-                </div>
-                <div class="app-card" id="tiktok-card">
-                    <div class="img-container">
-                        <img loading="lazy" class="image-fluid flip-vertical-left"
-                            src="{{ asset('assets/site/img/tiktokfollowers.webp') }}" alt="TikTok" />
-                    </div>
-                    <div class="card-title">TikTok</div>
-                    <a href="#" class="btn btn-light" data-toggle="modal" data-target="#tiktokModal">Start</a>
-                </div>
-                <div class="app-card" id="instagram-card">
-                    <div class="img-container">
-                        <img loading="lazy" class="image-fluid flip-vertical-left"
-                            src="{{ asset('assets/site/img/instagram-followers.webp') }}" alt="Instagram" />
-                    </div>
-                    <div class="card-title">Instagram</div>
-                    <a href="#" class="btn btn-light" data-toggle="modal" data-target="#instagramModal">Start</a>
-                </div>
-                <div class="app-card" id="youtube-card">
-                    <div class="img-container">
-                        <img loading="lazy" class="image-fluid flip-vertical-left"
-                            src="{{ asset('assets/site/img/youtube.webp') }}" alt="YouTube" />
-                    </div>
-                    <div class="card-title">YouTube</div>
-                    <a href="#" class="btn btn-light" data-toggle="modal" data-target="#youtubeModal">Start</a>
-                </div>
-                <div class="app-card" id="snapchat-card">
-                    <div class="img-container">
-                        <img loading="lazy" class="image-fluid flip-vertical-left" src="{{ asset('assets/site/img/snap.webp') }}"
-                            alt="Snapchat" />
-                    </div>
-                    <div class="card-title">Snapchat</div>
-                    <a href="#" class="btn btn-light" data-toggle="modal" data-target="#snapchatModal">Start</a>
-                </div>
+                @endforeach
+
             </div>
         </div>
         <section class="steps-section py-5 text-dark">
@@ -603,8 +620,8 @@
                             <div class="card-body d-flex">
                                 <div
                                     class="step-number text-white rounded-circle d-flex align-items-center justify-content-center mr-3">
-                                    <img src="{{ asset('assets/site/img/complete.png') }}" alt=""
-                                        width="50px" height="50px" />
+                                    <img src="{{ asset('assets/site/img/complete.png') }}" alt="" width="50px"
+                                        height="50px" />
                                 </div>
 
                                 <div>
@@ -670,5 +687,6 @@
     </div>
 @endsection
 @push('js')
-    <script src="{{ asset('assets/site/img/https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+    <script src="{{ asset('assets/site/img/https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js">
+    </script>
 @endpush

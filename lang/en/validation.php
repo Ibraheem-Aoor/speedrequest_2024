@@ -166,6 +166,9 @@ return [
         'shopname' => [
             'unique' => 'Shop Already Exists',
         ],
+        'features.*' => [
+            'required' => 'All Featuers Required',
+        ]
     ],
 
     /*

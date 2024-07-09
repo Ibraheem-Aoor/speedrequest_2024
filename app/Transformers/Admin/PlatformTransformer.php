@@ -33,13 +33,13 @@ class PlatformTransformer extends TransformerAbstract
         <a data-method="POST"  data-bs-toggle="modal"
             data-header-title="' . __('general.update_barber') . ': ' . $barber->name . '"
             data-bs-target="#platform-modal" data-image="' . getImageUrl($barber->logo) . '" data-name="' . $barber->name . '"
-            data-status="' . $barber->status . '"
+            data-status="' . $barber->status . '" data-order="' . $barber->order . '"
             data-action="' . route('admin.platform.update', encrypt($barber->id)) . '" data-method="POST"
             class="btn btn-sm btn-soft-primary"><img loading="lazy" width="10" height="10" src="' . asset('assets/common/edit.svg') . '"></a>
 
         <a data-bs-toggle="modal" data-bs-target="#delete-modal" data-delete-url="' . route('admin.platform.destroy', encrypt($barber->id)) . '"
         data-message="' . __('general.confirm_delete') . '" data-name="' . $barber->name . '" id="row-' . $barber->id . '"
-       class="btn btn-sm btn-danger ms-2"><img loading="lazy" width="10" height="10" src="' . asset('assets/user/libs/feather-icons/icons/trash.svg') . '"><i class="fa fa-eye"></i></a>
+       class="btn btn-sm btn-danger ms-2"><img loading="lazy" width="10" height="10" src="' . asset('assets/user/libs/feather-icons/icons/trash.svg') . '"></a>
         </div>';
     }
 

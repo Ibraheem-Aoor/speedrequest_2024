@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use App\Traits\HasStatus;
+use App\Transformers\Admin\ServiceTransformer;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
@@ -15,10 +16,14 @@ class Service extends Model
                 'features',
                 'platform_id',
                 'offer_url',
-                'is_published',
                 'task_title',
                 'status',
     ];
+
+
+
+    public $modal = '#service-modal';
+    public $transformer = ServiceTransformer::class;
 
 
 

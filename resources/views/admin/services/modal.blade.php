@@ -11,24 +11,6 @@
                     <div class="p-3 rounded box-shadow">
                         <div class="row">
                             <div class="col-md-12">
-                                <div class="avatar-picture">
-                                    <div class="image-input image-input-outline" id="imgUserProfile">
-                                        <div class="image-input-wrapper"
-                                            style="background-image: url('{{ asset('assets/common/product-placeholder.webp') }}');">
-                                        </div>
-                                        <label class="btn">
-                                            <i>
-                                                <img src="{{ asset('assets/common/edit.svg') }}" alt=""
-                                                    class="img-fluid">
-                                            </i>
-                                            <input type="file" name="image" id="changeImg"
-                                                accept=".png, .jpg, .jpeg">
-                                            <input type="button" value="Upload" id="uploadButton">
-                                        </label>
-                                    </div>
-                                </div>
-                            </div><!--end col-->
-                            <div class="col-md-12">
                                 <div class="mb-3">
                                     <label class="form-label">{{ __('general.title') }}<span
                                             class="text-danger">*</span></label>
@@ -40,35 +22,45 @@
                             </div><!--end col-->
                             <div class="col-md-12">
                                 <div class="mb-3">
-                                    <label class="form-label">{{ __('general.description') }}<span
+                                    <label class="form-label">{{ __('general.task_title') }}<span
                                             class="text-danger">*</span></label>
                                     <div class="form-icon position-relative">
-                                        <input type="text" name="description" id="description" required
+                                        <input type="text" name="task_title" id="task_title" required
                                             class="form-control">
                                     </div>
                                 </div>
                             </div><!--end col-->
                             <div class="col-md-12">
                                 <div class="mb-3">
-                                    <label class="form-label">{{ __('general.price') }}<span
+                                    <label class="form-label">{{ __('general.offer_url') }}<span
                                             class="text-danger">*</span></label>
                                     <div class="form-icon position-relative">
-                                        <input type="number" name="price" id="price" required
+                                        <input type="text" name="offer_url" id="offer_url" required
                                             class="form-control">
                                     </div>
                                 </div>
                             </div><!--end col-->
                             <div class="col-md-12">
                                 <div class="mb-3">
-                                    <label class="form-label">{{ __('general.time_between_bookings_in_minutes') }}<span
+                                    <label class="form-label">{{ __('general.platform') }}<span
                                             class="text-danger">*</span></label>
                                     <div class="form-icon position-relative">
-                                        <input type="number" name="time_between_bookings" id="time_between_bookings"
-                                            required 
-                                            class="form-control">
+                                        <select name="platform_id" id="platform_id" class="form-control">
+                                            @foreach ($platforms as $platform)
+                                            <option value="{{ $platform->id }}">{{ $platform->name }}</option>
+                                            @endforeach
+                                        </select>
                                     </div>
                                 </div>
                             </div><!--end col-->
+                            <div class="col-sm-12" id="features-btn">
+                                <div>
+
+                                    <label for="">{{ __('custom.features') }}:</label>
+                                    <button type="button" class="add_feature btn-xs btn-primary"
+                                        onclick="addNewFeature($(this));"><i class="fa fa-plus"></i></button>
+                                </div>
+                            </div>
                             <div class="col-md-12">
                                 <div class="mb-3">
                                     <label class="form-label">{{ __('general.status') }}</label>

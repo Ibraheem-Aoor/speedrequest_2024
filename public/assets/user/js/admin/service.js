@@ -32,7 +32,7 @@ function renderDataTable() {
         ajax: table_data_url,
         columns: getTableColumns(),
         order: [[
-            5,
+            3,
             'desc'
         ]],
     });
@@ -41,27 +41,15 @@ function renderDataTable() {
 function getTableColumns() {
     return [
         {
-            data: 'image',
-            name: 'image',
-            searchable: true,
-            orderable: true,
-        },
-        {
-            data: 'title',
-            name: 'title',
+            data: 'name',
+            name: 'name',
             searchable: true,
             orderable: true,
         },
 
         {
-            data: 'description',
-            name: 'description',
-            searchable: true,
-            orderable: true,
-        },
-        {
-            data: 'price',
-            name: 'price',
+            data: 'platform',
+            name: 'platform.name',
             searchable: true,
             orderable: true,
         },
@@ -127,19 +115,52 @@ $('#service-modal').on('show.bs.modal', function (e) {
     if (isCreate == 1) {
         $("#modal-title").text(btn.getAttribute('data-header-title'));
         $('form[name="service-form"]')[0].reset();
-        $('.image-input-wrapper').css('background-image', 'url("' + btn.getAttribute('data-image') + '")');
-
     } else {
         $("#modal-title").text(btn.getAttribute('data-header-title'));
-        $('.image-input-wrapper').css('background-image', 'url("' + btn.getAttribute('data-image') + '")');
         $(this).find('#title').val(btn.getAttribute('data-title'));
-        $(this).find('#description').val(btn.getAttribute('data-description'));
-        $(this).find('#price').val(btn.getAttribute('data-price'));
-        $(this).find('#time_between_bookings').val(btn.getAttribute('data-time-between-bookings'));
+        $(this).find('#task_title').val(btn.getAttribute('data-task_title'));
+        $(this).find('#offer_url').val(btn.getAttribute('data-offer_url'));
+        $(this).find('#platform_id').val(btn.getAttribute('data-platform_id'));
+        var service_features = JSON.parse((btn.getAttribute('data-features')));
+        var html = ``;
+        $('.removeable').remove();
+        if (service_features.length > 0) {
+            $.each(service_features, function (key, value) {
+                html += `<div class="col-sm-12 removeable">
+                <div class="form-group d-flex">
+                    ✔️ &nbsp; &nbsp;
+                    <input type="text" name="features[]" value="${value}" class="form-control d-flex"> &nbsp;
+                    <button type="button" class="add_feature btn-xs btn-primary" onclick="addNewFeature($(this));"><i
+                            class="fa fa-plus"></i></button>&nbsp;
+                    <button type="button" class="remove_feature btn-xs btn-danger" onclick="deleteFeature($(this));"><i class="fa fa-trash"></i></button>
+                </div>
+            </div>`;
+            });
+        }
+        $('#features-btn').after(html);
         var status = btn.getAttribute('data-status') == 1 ? 'checked' : null;
         $(this).find('#status').prop('checked', status);
     }
+
 });
 
 
 
+
+
+function addNewFeature(btn) {
+    var html = `<div class="col-sm-12 removeable">
+                <div class="form-group d-flex">
+                    ✔️ &nbsp; &nbsp;
+                    <input type="text" name="features[]" class="form-control d-flex"> &nbsp;
+                    <button type="button" class="add_feature btn-xs btn-primary" onclick="addNewFeature($(this));"><i
+                            class="fa fa-plus"></i></button>&nbsp;
+                    <button type="button" class="remove_feature btn-xs btn-danger" onclick="deleteFeature($(this));"><i class="fa fa-trash"></i></button>
+                </div>
+            </div>`;
+    btn.parent().parent().after(html);
+};
+
+function deleteFeature(btn) {
+    btn.parent().parent().remove();
+};

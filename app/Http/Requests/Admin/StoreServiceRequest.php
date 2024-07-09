@@ -14,11 +14,16 @@ class StoreServiceRequest extends BaseAdminRequest
      */
     public function rules()
     {
+
         return [
-            'image' => ['required', 'image'],
-            'title' => ['required', 'string'],
-            'description' => ['required', 'string'],
-            'price' => ['required', 'numeric'],
+            'title'              =>  'required',
+            'platform_id'       =>  'required',
+            'task_title'       =>  'required',
+            'offer_url'         =>  'required|url',
+            'features'          =>  'required|array',
+            'features.*'        =>  'required',
         ];
     }
+
+
 }

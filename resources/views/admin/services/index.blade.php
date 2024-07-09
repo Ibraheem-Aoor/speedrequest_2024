@@ -1,5 +1,5 @@
 @extends('layouts.admin.master')
-@section('page-title', __('general.barbers'))
+@section('page-title', __('site.services'))
 @push('css')
     <link rel="stylesheet" href="https://cdn.datatables.net/2.0.0/css/dataTables.dataTables.css">
     <style>
@@ -47,8 +47,8 @@
         .avatar-picture .image-input .image-input-wrapper {
             border: 3px solid #fff;
             background-image: url("");
-            width: 200px;
-            height: 300px;
+            width: 100px;
+            height: 100px;
             /* border-radius: 50%; */
             background-repeat: no-repeat;
             background-size: contain !important;
@@ -102,9 +102,9 @@
 @endpush
 @section('content')
     @include('admin.partials.page_header', [
-        'current_page_name' => __('general.barbers'),
+        'current_page_name' =>__('site.services'),
         'sub_pages' => [
-            __('general.barbers') => route('admin.contacts.index'),
+           __('site.services') => route('admin.contacts.index'),
         ],
     ])
     {{-- Table Extra actions --}}
@@ -113,9 +113,9 @@
         <nav aria-label="breadcrumb" class="d-inline-block">
             <ul class="breadcrumb bg-transparent rounded mb-0 p-0">
                 <li class="breadcrumb-item text-capitalize">
-                    <a class="btn btn-md btn-primary text-white m-1" data-bs-toggle="modal" data-bs-target="#barber-modal"
-                        data-action="{{ route($route . '.store') }}" data-method="POST" data-is-create="1"
-                        data-header-title= "{{ __('general.create_new_barber') }}" data-image="{{ asset('assets/common/product-placeholder.webp') }}"
+                    <a class="btn btn-md btn-primary text-white m-1" data-bs-toggle="modal" data-bs-target="#service-modal"
+                        data-action="{{ route($route . '.store') }}" data-method="POST" data-is-create="1" data-image="{{ asset('assets/common/product-placeholder.webp') }}"
+                        data-header-title= "{{ __('general.create_new_serivce') }}"
                         href="{{ route('admin.dashboard') }}">{{ __('general.new') }}</a>
                 </li>
             </ul>
@@ -126,7 +126,7 @@
         <div class="col-12 mt-4">
             <div class="card rounded shadow">
                 <div class="p-4 border-bottom">
-                    <h5 class="title mb-0">{{ __('general.barbers') }}</h5>
+                    <h5 class="title mb-0">{{__('site.services') }}</h5>
                 </div>
                 <div class="p-4">
                     <div class="table-responsive shadow rounded p-4">
@@ -136,7 +136,11 @@
                                     <th class="border-bottom p-3" style="min-width: 220px;">
                                         {{ __('general.image') }}</th>
                                     <th class="border-bottom p-3" style="min-width: 220px;">
-                                        {{ __('general.name') }}</th>
+                                        {{ __('general.title') }}</th>
+                                    <th class="border-bottom p-3">{{ __('general.description') }}</th>
+                                    <th class="text-center border-bottom p-3" style="min-width: 200px;">
+                                        {{ __('general.price') }}
+                                    </th>
                                     <th class="text-center border-bottom p-3" style="min-width: 200px;">
                                         {{ __('general.status') }}
                                     </th>
@@ -156,7 +160,7 @@
 
 
     {{-- UpdateOrCreate Modal --}}
-    @include('admin.barbers.modal')
+    @include('admin.services.modal')
     @include('partials.confirm-delete-modal')
 @endsection
 
@@ -172,5 +176,5 @@
         <script src="{{ asset('assets/user/js/datatable-en.js') }}"></script>
     @endif
     <script src="https://cdn.datatables.net/2.0.0/js/dataTables.min.js"></script>
-    <script src="{{ asset('assets/user/js/admin/barber.js') }}"></script>
+    <script src="{{ asset('assets/user/js/admin/service.js') }}?v=0.01"></script>
 @endpush

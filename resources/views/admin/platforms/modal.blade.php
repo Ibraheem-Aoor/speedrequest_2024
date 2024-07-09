@@ -1,4 +1,4 @@
-<div class="modal fade" id="barber-modal" tabindex="-1" aria-labelledby="LoginForm-title" aria-hidden="true">
+<div class="modal fade" id="platform-modal" tabindex="-1" aria-labelledby="LoginForm-title" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered">
         <div class="modal-content rounded shadow border-0">
             <form name="service-form" class="custom-form">
@@ -22,7 +22,7 @@
                                                     class="img-fluid">
                                             </i>
                                             <input type="file" name="image" id="changeImg"
-                                                accept=".png, .jpg, .jpeg">
+                                                accept="image/*">
                                             <input type="button" value="Upload" id="uploadButton">
                                         </label>
                                     </div>

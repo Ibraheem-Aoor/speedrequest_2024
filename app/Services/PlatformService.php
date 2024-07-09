@@ -1,22 +1,19 @@
 <?php
 namespace App\Services;
 
-use App\Models\Barber;
-use App\Models\Contact;
-use App\Models\Service;
+use App\Models\Platform;
 use App\Services\BaseModelService;
-use Illuminate\Database\Eloquent\Model;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Log;
 use Throwable;
 use Yajra\DataTables\Facades\DataTables;
 
-class BarberService extends BaseModelService
+class PlatformService extends BaseModelService
 {
 
     public function __construct()
     {
-        parent::__construct(new Barber());
+        parent::__construct(new Platform());
         $this->allow_all_records = true;
     }
 
@@ -57,7 +54,7 @@ class BarberService extends BaseModelService
         $data = $request->toArray();
         if($request->hasFile('image'))
         {
-            $data['image'] = saveImage('services' , $request->file('image'));
+            $data['logo'] = saveImage('platforms' , $request->file('image'));
         }
         $data['status'] = @$data['status'] == 'on';
         return $data;

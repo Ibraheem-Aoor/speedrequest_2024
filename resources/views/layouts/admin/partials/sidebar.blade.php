@@ -18,7 +18,7 @@
                 <a href="{{ route('admin.service.index') }}"><i class="ti ti-browser  me-2"></i>{{ __('general.services') }}</a>
             </li>
             <li class="">
-                <a href="{{ route('admin.barber.index') }}"><i class="ti ti-user me-2"></i>{{ __('general.barbers') }}</a>
+                <a href="{{ route('admin.platform.index') }}"><i class="ti ti-user me-2"></i>{{ __('general.platforms') }}</a>
             </li>
             <li class="">
                 <a href="{{ route('admin.booking.index') }}"><i class="ti ti-shopping-cart me-2"></i>{{ __('general.bookings') }}</a>

@@ -68,4 +68,5 @@ return [
     'max_size' => 'Max Size: :size',
     'add' => 'Add',
     'location_on_google_maps' => 'Location On Google Maps [iframe]',
+    'platforms' => 'Platforms',
 ];

@@ -9,10 +9,10 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Admin\DashbaordController;
 use App\Http\Controllers\Admin\AccountTreeController;
-use App\Http\Controllers\Admin\BarberController;
 use App\Http\Controllers\Admin\BookingController;
 use App\Http\Controllers\Admin\ContactController as UserContactController;
 use App\Http\Controllers\Admin\PageController;
+use App\Http\Controllers\Admin\PlatformController;
 use App\Http\Controllers\Admin\ServiceController;
 use App\Http\Controllers\Admin\SettingController;
 use App\Http\Controllers\Admin\WorkHoursController;
@@ -59,13 +59,13 @@ Route::middleware('auth:admin')
             Route::get('/table-data', [ServiceController::class, 'getTableData'])->name('table');
         });
         // Barbers
-        Route::prefix('barbers')->name('barber.')->group(function () {
-            Route::get('', [BarberController::class, 'index'])->name('index');
-            Route::post('store', [BarberController::class, 'store'])->name('store');
-            Route::post('/{service}/update', [BarberController::class, 'update'])->name('update');
-            Route::delete('/{service}/delete', [BarberController::class, 'destroy'])->name('destroy');
-            Route::get('/status-toggle', [BarberController::class, 'toggleStatus'])->name('toggle_status');
-            Route::get('/table-data', [BarberController::class, 'getTableData'])->name('table');
+        Route::prefix('platforms')->name('platform.')->group(function () {
+            Route::get('', [PlatformController::class, 'index'])->name('index');
+            Route::post('store', [PlatformController::class, 'store'])->name('store');
+            Route::post('/{service}/update', [PlatformController::class, 'update'])->name('update');
+            Route::delete('/{service}/delete', [PlatformController::class, 'destroy'])->name('destroy');
+            Route::get('/status-toggle', [PlatformController::class, 'toggleStatus'])->name('toggle_status');
+            Route::get('/table-data', [PlatformController::class, 'getTableData'])->name('table');
         });
         // Work Hours
         Route::prefix('work-hours')->name('work_hour.')->group(function () {

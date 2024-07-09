@@ -77,7 +77,7 @@ function getTableColumns() {
  * Project Info modal
  */
 
-$('#barber-modal').on('show.bs.modal', function (e) {
+$('#platform-modal').on('show.bs.modal', function (e) {
     var btn = e.relatedTarget;
     $(this).find('textarea').text(btn.getAttribute('data-message'));
 });
@@ -103,7 +103,7 @@ function toggleStatus(input) {
  * Project Info modal
  */
 
-$('#barber-modal').on('show.bs.modal', function (e) {
+$('#platform-modal').on('show.bs.modal', function (e) {
     var btn = e.relatedTarget;
     var action = btn.getAttribute('data-action');
     var method = btn.getAttribute('data-method');

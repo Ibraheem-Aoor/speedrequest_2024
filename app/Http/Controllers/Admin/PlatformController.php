@@ -8,23 +8,18 @@ use App\Services\ContactService;
 use Illuminate\Http\Request;
 use Throwable;
 use App\Http\Controllers\Admin\BaseAdminController;
-use App\Http\Requests\Admin\StoreBarberRequest;
-use App\Http\Requests\Admin\StoreServiceRequest;
+use App\Http\Requests\Admin\StorePlatformRequest;
 use App\Http\Requests\Admin\UpdateBarberRequest;
-use App\Http\Requests\Admin\UpdateServiceRequest;
-use App\Models\Service;
-use App\Services\BarberService;
-use App\Services\ServiceService;
+use App\Services\PlatformService;
 use Illuminate\Support\Facades\Cache;
 
-class BarberController extends BaseAdminController
+class PlatformController extends BaseAdminController
 {
 
-    public function __construct(protected BarberService $service)
+    public function __construct(protected PlatformService $service)
     {
-        $this->base_view_path = 'admin.barbers';
-        $this->base_route_path = 'admin.barber';
-
+        $this->base_view_path = 'admin.platforms';
+        $this->base_route_path = 'admin.platform';
     }
     public function index()
     {
@@ -33,9 +28,9 @@ class BarberController extends BaseAdminController
         return view("{$this->base_view_path}.index", $data);
     }
 
-    public function store(StoreBarberRequest $request)
+    public function store(StorePlatformRequest $request)
     {
-        Cache::forget('barbers');
+        Cache::forget('platforms');
         return $this->service->create($request);
     }
     public function update($id , UpdateBarberRequest $request)

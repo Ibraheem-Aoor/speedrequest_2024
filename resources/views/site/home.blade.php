@@ -35,7 +35,7 @@
         }
 
         body {
-            color: white;
+            /* color: white; */
             text-align: center;
             font-family: "Arial", sans-serif;
         }
@@ -540,6 +540,8 @@
             color: white !important;
         }
     </style>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css">
+
 @endpush
 @section('content')
     <p style="font-size: 1px">s</p>
@@ -569,7 +571,7 @@
                                 src="{{ getImageUrl($platform->logo) }}" alt="Google Play" />
                         </div>
                         <div class="card-title">{{ $platform->name }}</div>
-                        <a href="#" class="btn btn-light" data-toggle="modal" data-target="#googleModal">Start</a>
+                        <a href="{{ route('site.services' , encrypt($platform->id)) }}" class="btn btn-light">Start</a>
                     </div>
                 @endforeach
 
@@ -655,21 +657,21 @@
                   animation-delay: 0.3s;
                   animation-name: fadeInUp;
                 ">
-                            <form>
+                            <form action="{{ route('site.contact.submit') }}"  method="POST" class="custom-form">
                                 <div class="row g-3 text-left">
                                     <div class="col-md-12">
                                         <label class="form-label text-initial" for="email">Your Email</label>
                                         <div class="form-group">
 
                                             <input type="email" class="form-control" id="email"
-                                                placeholder="Your Email" />
+                                                placeholder="Your Email"  name="email"/>
                                         </div>
                                     </div>
                                     <div class="col-12">
                                         <div class="form-group">
                                             <label class="form-label" for="message">Message</label>
 
-                                            <textarea class="form-control" placeholder="Leave a message here" id="message" style="height: 150px"></textarea>
+                                            <textarea class="form-control" placeholder="Leave a message here" id="message" style="height: 150px" name="message"></textarea>
                                         </div>
                                     </div>
                                     <div class="col-12">
@@ -687,6 +689,7 @@
     </div>
 @endsection
 @push('js')
-    <script src="{{ asset('assets/site/img/https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js">
-    </script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
+
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
 @endpush

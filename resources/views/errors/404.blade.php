@@ -49,7 +49,7 @@
                         <img src="{{asset('assets/user/images/404.svg')}}" style="max-width: 500px;" alt="">
                         <div class="text-uppercase mt-4 display-5 fw-semibold">Page Not Found</div>
                         <div class="text-capitalize text-dark mb-4 error-page"></div>
-                        <p class="text-muted para-desc mx-auto">Our design projects are fresh and simple and will benefit your business greatly. Learn more about our work!</p>
+                        {{-- <p class="text-muted para-desc mx-auto">Our design projects are fresh and simple and will benefit your business greatly. Learn more about our work!</p> --}}
                     </div><!--end col-->
                 </div><!--end row-->
 

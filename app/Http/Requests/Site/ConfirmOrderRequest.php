@@ -4,10 +4,8 @@ namespace App\Http\Requests\Site;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class ContactRequest extends FormRequest
+class ConfirmOrderRequest extends FormRequest
 {
-
-    protected $stopOnFirstFailure = true;
     /**
      * Determine if the user is authorized to make this request.
      *
@@ -26,8 +24,7 @@ class ContactRequest extends FormRequest
     public function rules()
     {
         return [
-            'email' => 'required|email',
-            'message' => 'required|string',
+            'profile' => 'required|url',
         ];
     }
 }

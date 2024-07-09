@@ -30,9 +30,11 @@ Route::get('/', [HomeController::class, 'index'])->name('home');
 Route::group([
     'as' => 'site.'
 ], function () {
-    Route::get('about', [HomeController::class, 'about'])->name('about');
-    Route::get('services', [HomeController::class, 'services'])->name('services');
+    Route::get('services/{platform_id}', [HomeController::class, 'services'])->name('services');
+    Route::get('offer/{service_id}', [HomeController::class, 'redirectToOffer'])->name('offer_redirect');
+    Route::get('task/complete', [HomeController::class, 'taskCompleted'])->name('task_completed');
     Route::get('contact', [HomeController::class, 'contact'])->name('contact');
+    Route::post('order-confirm/{order_id}', [HomeController::class, 'confirmOrder'])->name('confirm_order');
     Route::post('contact-submit', [ContactController::class, 'store'])->name('contact.submit');
     // certifed freelancer courses
     Route::prefix('booking')->name('booking.')->group(function () {

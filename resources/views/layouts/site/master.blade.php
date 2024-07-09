@@ -7,14 +7,21 @@
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
     <meta content="" name="keywords">
     <meta content="" name="description">
+    <meta name="csrf" content="{{ csrf_token() }}">
 
     <!-- Favicon -->
     <link href="img/favicon.ico" rel="icon">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
 
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css">
     <style>
+        /*** copyright Start ***/
+        .copyright {
+            border-top: 1px solid rgba(255, 255, 255, 0.08);
+            background: var(--bs-dark) !important;
+        }
+
+        /*** copyright end ***/
         /* Start Loader Style */
         #preloader {
             position: fixed;
@@ -95,22 +102,26 @@
     </div>
 
 
-
     @yield('content')
+
+    <!-- Copyright Start -->
+    <div class="container-fluid copyright py-4 d-none">
+        <div class="container">
+            <div class="row g-4 align-items-center">
+                <div class="col-12 text-center  mb-md-0">
+                    <span class="text-white"><a href="#"><i
+                                class="fas fa-copyright text-light me-2"></i>SpeedRequest</a>, All right
+                        reserved.</span>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Copyright End -->
 
     <!-- JavaScript Libraries -->
     <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
-    <script>
-        // Preloader
-        if (document.getElementById('preloader')) {
-            setTimeout(() => {
-                document.getElementById('preloader').style.visibility = 'hidden';
-                document.getElementById('preloader').style.opacity = '0';
-            }, 350);
-        }   
-    </script>
+    <script src="{{ asset('assets/user/js/admin/master.js') }}"></script>
     @stack('js')
 </body>
 

@@ -32,22 +32,10 @@ function getTableColumns() {
             searchable: true,
             orderable: true,
         },
-        {
-            data: 'name',
-            name: 'name',
-            searchable: true,
-            orderable: true,
-        },
 
         {
             data: 'email',
             name: 'email',
-            searchable: true,
-            orderable: true,
-        },
-        {
-            data: 'subject',
-            name: 'subject',
             searchable: true,
             orderable: true,
         },

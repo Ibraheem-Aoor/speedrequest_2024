@@ -32,6 +32,7 @@ class ContactController extends Controller
             Contact::create($request->validated());
             $response = generateResponse(status: true, message: __('response.we_will'), reload: true);
         } catch (Throwable $e) {
+            dd($e);
             $response = generateResponse(status: false, message: __('response.error'));
         }
         return response()->json($response);

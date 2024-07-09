@@ -58,14 +58,11 @@
                                 <tr>
                                     <th class="border-bottom p-3" style="min-width: 220px;">
                                         {{ __('general.number') }}</th>
-                                    <th class="border-bottom p-3">{{ __('general.name') }}</th>
                                     <th class="text-center border-bottom p-3" style="min-width: 200px;">
                                         {{ __('general.email') }}
                                     </th>
-                                    <th class="text-center border-bottom p-3">{{ __('general.subject') }}
-                                    </th>
                                     <th class="text-center border-bottom p-3">{{ __('general.date') }}</th>
-                                    {{-- actions --}}
+                                    {{-- {{-- actions --}}
                                     <th class="text-end border-bottom p-3" style="min-width: 200px;">
                                         {{ __('general.actions') }}</th>
                                 </tr>

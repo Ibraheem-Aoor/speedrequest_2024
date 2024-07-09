@@ -1,5 +1,7 @@
 var preloader = document.getElementById('preloader');
 $(document).ready(function () {
+    $('#preloader').fadeOut();
+
     // ajax setup
     $.ajaxSetup({
         headers: {
@@ -69,8 +71,7 @@ function setToastrOptions() {
 $(document).on('submit', '.custom-form', function (e) {
     e.preventDefault();
     var formData = new FormData(this);
-    preloader.style.visibility = 'visible';
-    preloader.style.opacity = '1';
+    $('#preloader').show();
 
 
     $.ajax({

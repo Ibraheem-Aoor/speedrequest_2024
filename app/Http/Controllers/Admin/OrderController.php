@@ -18,7 +18,7 @@ use App\Services\BookingService;
 use App\Services\ServiceService;
 use Illuminate\Support\Facades\Cache;
 
-class BookingController extends BaseAdminController
+class OrderController extends BaseAdminController
 {
 
     public function __construct(protected BookingService $service)

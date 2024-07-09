@@ -34,18 +34,15 @@ class ServiceController extends BaseAdminController
 
     public function store(StoreServiceRequest $request)
     {
-        Cache::forget('services');
         return $this->service->create($request);
     }
     public function update($id , StoreServiceRequest $request)
     {
-        Cache::forget('services');
         return $this->service->update(decrypt($id) , $request);
     }
 
     public function destroy($id)
     {
-        Cache::forget('services');
         return $this->service->delete(decrypt($id));
     }
 

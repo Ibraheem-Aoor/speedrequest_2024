@@ -56,8 +56,8 @@
                             <div class="col-sm-12" id="features-btn">
                                 <div>
 
-                                    <label for="">{{ __('custom.features') }}:</label>
-                                    <button type="button" class="add_feature btn-xs btn-primary"
+                                    <label for="">{{ __('general.features') }}:</label>
+                                    <button type="button" class="add_feature btn btn-xs btn-primary mb-2"
                                         onclick="addNewFeature($(this));"><i class="fa fa-plus"></i></button>
                                 </div>
                             </div>

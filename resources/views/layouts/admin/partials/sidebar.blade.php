@@ -26,7 +26,7 @@
             <li class="">
                 <a href="{{ route('admin.contacts.index') }}"><i class="ti ti-mail-opened me-2"></i>{{ __('general.contacts') }}</a>
             </li>
-            <li class="sidebar-dropdown">
+            {{-- <li class="sidebar-dropdown">
                 <a href="javascript:void(0)"><i class="ti ti-license me-2"></i>{{ __('general.pages') }}</a>
                 <div class="sidebar-submenu">
                     <ul>
@@ -34,12 +34,12 @@
                         <li><a href="{{ route('admin.page.edit', ['slug' => 'about']) }}">{{ __('general.about') }}</a></li>
                     </ul>
                 </div>
-            </li>
+            </li> --}}
             <li class="sidebar-dropdown" id="test">
                 <a href="javascript:void(0)"><i class="ti ti-license me-2"></i>{{ __('general.settings') }}</a>
                 <div class="sidebar-submenu">
                     <ul>
-                        <li><a href="{{ route('admin.work_hour.edit') }}">{{ __('general.working_hours') }}</a></li>
+                        {{-- <li><a href="{{ route('admin.work_hour.edit') }}">{{ __('general.working_hours') }}</a></li> --}}
                         <li><a href="{{ route('admin.setting.edit') }}">{{ __('general.site_settings') }}</a></li>
                     </ul>
                 </div>

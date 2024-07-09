@@ -126,13 +126,13 @@ $('#service-modal').on('show.bs.modal', function (e) {
         $('.removeable').remove();
         if (service_features.length > 0) {
             $.each(service_features, function (key, value) {
-                html += `<div class="col-sm-12 removeable">
+                html += `<div class="col-sm-12 removeable mb-2">
                 <div class="form-group d-flex">
                     ✔️ &nbsp; &nbsp;
                     <input type="text" name="features[]" value="${value}" class="form-control d-flex"> &nbsp;
-                    <button type="button" class="add_feature btn-xs btn-primary" onclick="addNewFeature($(this));"><i
+                    <button type="button" class="add_feature btn btn-xs btn-primary" onclick="addNewFeature($(this));"><i
                             class="fa fa-plus"></i></button>&nbsp;
-                    <button type="button" class="remove_feature btn-xs btn-danger" onclick="deleteFeature($(this));"><i class="fa fa-trash"></i></button>
+                    <button type="button" class="remove_feature btn btn-xs btn-danger" onclick="deleteFeature($(this));"><i class="fa fa-trash"></i></button>
                 </div>
             </div>`;
             });
@@ -149,13 +149,13 @@ $('#service-modal').on('show.bs.modal', function (e) {
 
 
 function addNewFeature(btn) {
-    var html = `<div class="col-sm-12 removeable">
+    var html = `<div class="col-sm-12 removeable mb-2">
                 <div class="form-group d-flex">
                     ✔️ &nbsp; &nbsp;
                     <input type="text" name="features[]" class="form-control d-flex"> &nbsp;
-                    <button type="button" class="add_feature btn-xs btn-primary" onclick="addNewFeature($(this));"><i
+                    <button type="button" class="add_feature btn btn-xs btn-primary" onclick="addNewFeature($(this));"><i
                             class="fa fa-plus"></i></button>&nbsp;
-                    <button type="button" class="remove_feature btn-xs btn-danger" onclick="deleteFeature($(this));"><i class="fa fa-trash"></i></button>
+                    <button type="button" class="remove_feature btn btn-xs btn-danger" onclick="deleteFeature($(this));"><i class="fa fa-trash"></i></button>
                 </div>
             </div>`;
     btn.parent().parent().after(html);

@@ -11,6 +11,7 @@ use App\Http\Controllers\Admin\DashbaordController;
 use App\Http\Controllers\Admin\AccountTreeController;
 use App\Http\Controllers\Admin\BookingController;
 use App\Http\Controllers\Admin\ContactController as UserContactController;
+use App\Http\Controllers\Admin\OrderController;
 use App\Http\Controllers\Admin\PageController;
 use App\Http\Controllers\Admin\PlatformController;
 use App\Http\Controllers\Admin\ServiceController;
@@ -73,10 +74,10 @@ Route::middleware('auth:admin')
             Route::post('store', [WorkHoursController::class, 'store'])->name('store');
         });
         // Bookings
-        Route::prefix('bookings')->name('booking.')->group(function () {
-            Route::get('', [BookingController::class, 'index'])->name('index');
-            Route::get('/table-data', [BookingController::class, 'getTableData'])->name('table');
-            Route::delete('/destroy/{id}', [BookingController::class, 'destroy'])->name('destroy');
+        Route::prefix('orders')->name('order.')->group(function () {
+            Route::get('', [OrderController::class, 'index'])->name('index');
+            Route::get('/table-data', [OrderController::class, 'getTableData'])->name('table');
+            Route::delete('/destroy/{id}', [OrderController::class, 'destroy'])->name('destroy');
         });
         // Work Hours
         Route::prefix('site-settings')->name('setting.')->group(function () {

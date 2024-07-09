@@ -69,4 +69,9 @@ return [
     'add' => 'Add',
     'location_on_google_maps' => 'Location On Google Maps [iframe]',
     'platforms' => 'Platforms',
+    'platform' => 'Platform',
+    'order' => 'Order',
+    'task_title' => 'Task Complete Text',
+    'offer_url' => 'Offer Url',
+    'features' => 'Featuers'
 ];

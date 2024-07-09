@@ -47,6 +47,7 @@ class PlatformController extends BaseAdminController
 
     public function toggleStatus(Request $request)
     {
+        Cache::forget('platforms');
         $response = $this->service->toggleStatus($request->id);
         return response()->json($response);
     }

@@ -73,5 +73,6 @@ return [
     'order' => 'Order',
     'task_title' => 'Task Complete Text',
     'offer_url' => 'Offer Url',
-    'features' => 'Featuers'
+    'features' => 'Featuers',
+    'orders' => 'Orders',
 ];

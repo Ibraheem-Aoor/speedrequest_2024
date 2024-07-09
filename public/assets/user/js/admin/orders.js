@@ -25,34 +25,22 @@ function renderDataTable() {
 function getTableColumns() {
     return [
         {
-            data: 'barber',
-            name: 'barber.name',
+            data: 'id',
+            name: 'id',
             searchable: true,
             orderable: true,
         },
         {
-            data: 'client_name',
-            name: 'client_name',
+            data: 'platform',
+            name: 'service.platform.name',
             searchable: true,
             orderable: true,
         },
         {
-            data: 'client_phone',
-            name: 'client_phone',
+            data: 'service',
+            name: 'service.name',
             searchable: true,
             orderable: true,
-        },
-        {
-            data: 'date',
-            name: 'date',
-            searchable: true,
-            orderable: true,
-        },
-        {
-            data: 'time',
-            name: 'time',
-            searchable: true,
-            orderable: true
         },
         {
             data: 'created_at',

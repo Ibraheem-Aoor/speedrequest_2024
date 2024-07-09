@@ -44,9 +44,9 @@
                         <i class="uil uil-usd-circle fs-4 mb-0"></i>
                     </div>
                     <div class="flex-1 ms-3">
-                        <h6 class="mb-0 text-muted">{{ __('general.barber') }}</h6>
+                        <h6 class="mb-0 text-muted">{{ __('general.platform') }}</h6>
                         <p class="fs-5 text-dark fw-bold mb-0"><span class="counter-value"
-                                data-target="{{ $barber_count }}">{{ $barber_count }}</span></p>
+                                data-target="{{ $platform_count }}">{{ $platform_count }}</span></p>
                     </div>
                 </div>
 
@@ -62,7 +62,7 @@
                         <i class="uil uil-shopping-bag fs-4 mb-0"></i>
                     </div>
                     <div class="flex-1 ms-3">
-                        <h6 class="mb-0 text-muted">{{ __('general.bookings') }}</h6>
+                        <h6 class="mb-0 text-muted">{{ __('general.order') }}</h6>
                         <p class="fs-5 text-dark fw-bold mb-0"><span class="counter-value"
                                 data-target="{{ $booking_count }}">{{ $booking_count }}</span></p>
                     </div>

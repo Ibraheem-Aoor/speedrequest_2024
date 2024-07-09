@@ -14,17 +14,17 @@ use App\Http\Requests\Admin\UpdateBarberRequest;
 use App\Http\Requests\Admin\UpdateServiceRequest;
 use App\Models\Service;
 use App\Services\BarberService;
-use App\Services\BookingService;
+use App\Services\OrderService;
 use App\Services\ServiceService;
 use Illuminate\Support\Facades\Cache;
 
 class OrderController extends BaseAdminController
 {
 
-    public function __construct(protected BookingService $service)
+    public function __construct(protected OrderService $service)
     {
-        $this->base_view_path = 'admin.bookings';
-        $this->base_route_path = 'admin.booking';
+        $this->base_view_path = 'admin.orders';
+        $this->base_route_path = 'admin.order';
 
     }
     public function index(Request $request)

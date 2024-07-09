@@ -21,7 +21,7 @@
                 <a href="{{ route('admin.platform.index') }}"><i class="ti ti-user me-2"></i>{{ __('general.platforms') }}</a>
             </li>
             <li class="">
-                <a href="{{ route('admin.booking.index') }}"><i class="ti ti-shopping-cart me-2"></i>{{ __('general.bookings') }}</a>
+                <a href="{{ route('admin.order.index') }}"><i class="ti ti-shopping-cart me-2"></i>{{ __('general.orders') }}</a>
             </li>
             <li class="">
                 <a href="{{ route('admin.contacts.index') }}"><i class="ti ti-mail-opened me-2"></i>{{ __('general.contacts') }}</a>
@@ -35,7 +35,7 @@
                     </ul>
                 </div>
             </li> --}}
-            <li class="sidebar-dropdown" id="test">
+            <li class="sidebar-dropdown d-none" id="test">
                 <a href="javascript:void(0)"><i class="ti ti-license me-2"></i>{{ __('general.settings') }}</a>
                 <div class="sidebar-submenu">
                     <ul>

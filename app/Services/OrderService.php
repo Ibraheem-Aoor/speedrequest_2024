@@ -90,7 +90,7 @@ class OrderService extends BaseModelService
     public function getTableData(Request $request)
     {
         $query = $this->model::query()
-            ->with(['barber', 'services'])
+            ->with('service.platform')
             ->when($request->has('booking_id'), function ($query) use ($request) {
                 getAuthUser('admin')->unReadNotifications()->find($request->query('amp;notification_id'))?->markAsRead();
                 $query->where('id', $request->query('booking_id'));

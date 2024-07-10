@@ -551,7 +551,7 @@
         <div class="left">
             <div>
                 <div class="logo r">
-                    <img loading="lazy" src="{{ asset('assets/site/img/home-logo.webp') }}" alt="" width="60%" />
+                    <img loading="lazy" src="{{ asset('assets/site/img/logo.webp') }}" alt="" width="80%" />
                     <p class="baskervville-sc-regular">
                         <b> SpeedRequest </b>
                     </p>

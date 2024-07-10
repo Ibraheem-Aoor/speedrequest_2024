@@ -75,16 +75,13 @@ class HomeController extends BaseSiteContoller
      */
     public function taskCompleted(Request $request)
     {
-        // if (
-        //     session()->has('has_visited_cpa_page') && session()->get('has_visited_cpa_page') == 'YES' &&
-        //     $request->headers->has('referer') && $request->headers->get('referer') != null && session()->has('current_order_id')
-        // ) {
         if (
             session()->has('has_visited_cpa_page') && session()->get('has_visited_cpa_page') == 'YES' &&
-            $request->headers->has('referer') && $request->headers->get('referer') != null && session()->has('current_order_id')
+            $request->ip() != session()->get('user_ip') && session()->has('current_order_id')
         ) {
             $data['order'] = Order::query()->where('id', session()->get('current_order_id'))->first();
-            if (!isset($data['order'])) {
+            if(!isset($data['order']))
+            {
                 return abort(404);
             }
             return view('site.task_completed', $data);
@@ -92,9 +89,9 @@ class HomeController extends BaseSiteContoller
         abort(404);
     }
 
-    public function confirmOrder(ConfirmOrderRequest $request, $order_id, OrderService $order_service)
+    public function confirmOrder(ConfirmOrderRequest $request ,$order_id , OrderService $order_service)
     {
-        return $order_service->update(decrypt($order_id), $request);
+        return $order_service->update(decrypt($order_id) , $request);
     }
 
     public function contact(): View

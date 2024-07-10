@@ -32,15 +32,15 @@ class OrderService extends BaseModelService
 
     public function update($id, $request)
     {
+        $model = $this->find($id);
         try {
-            $model = $this->find($id);
             $data = $this->getModelAttributes($request);
             $model->update($data);
         } catch (Throwable $e) {
             Log::error("Fail with Updated in Model : " . get_class($this) . " erorr:" . $e->getMessage());
             return generateResponse(status: false, message: __('response.faild_created'));
         }
-        session()->forget(['has_visited_cpa_page', 'current_order_id', 'user_ip']);
+        session()->forget(['has_visited_cpa_page', 'current_order_id', 'user_ip' , 'last_visit_order_'.$model->id]);
         return generateResponse(status: true, message: __('response.success_created'), redirect: route('home'));
 
     }

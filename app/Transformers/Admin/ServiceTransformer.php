@@ -17,6 +17,7 @@ class ServiceTransformer extends TransformerAbstract
     {
         return [
             'id' => $barber->id,
+            'image' => '<img src="' . getImageUrl($barber->image) . '" width="100" height="100"/>',
             'name' => $barber->name,
             'platform' => $barber->platform->name,
             'status' => $this->getStatusColumn($barber),
@@ -50,7 +51,7 @@ class ServiceTransformer extends TransformerAbstract
             </a>',
             __('general.update_barber'),
             $barber->name,
-            getImageUrl($barber->logo),
+            getImageUrl($barber->image),
             $barber->name,
             $barber->status,
             $editUrl,

@@ -41,6 +41,12 @@ function renderDataTable() {
 function getTableColumns() {
     return [
         {
+            data: 'image',
+            name: 'image',
+            searchable: true,
+            orderable: true,
+        },
+        {
             data: 'name',
             name: 'name',
             searchable: true,
@@ -113,9 +119,25 @@ $('#service-modal').on('show.bs.modal', function (e) {
     $(this).find('form').attr('method', method);
     // create or update
     if (isCreate == 1) {
+        $('.image-input-wrapper').css('background-image', 'url("' + btn.getAttribute('data-image') + '")');
         $("#modal-title").text(btn.getAttribute('data-header-title'));
         $('form[name="service-form"]')[0].reset();
+        // Get the file input element
+        var fileInput = document.getElementById('changeImg');
+
+        // Reset the file input by clearing its value
+        fileInput.value = null;
+        $('.removeable').remove();
+
+        $('#features-btn').after('');
+
     } else {
+        $('.image-input-wrapper').css('background-image', 'url("' + btn.getAttribute('data-image') + '")');
+        // Get the file input element
+        var fileInput = document.getElementById('changeImg');
+
+        // Reset the file input by clearing its value
+        fileInput.value = null;
         $("#modal-title").text(btn.getAttribute('data-header-title'));
         $(this).find('#title').val(btn.getAttribute('data-title'));
         $(this).find('#task_title').val(btn.getAttribute('data-task_title'));

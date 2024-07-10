@@ -11,6 +11,22 @@
                     <div class="p-3 rounded box-shadow">
                         <div class="row">
                             <div class="col-md-12">
+                                <div class="avatar-picture">
+                                    <div class="image-input image-input-outline" id="imgUserProfile">
+                                        <div class="image-input-wrapper"
+                                            style="background-image: url('{{ asset('assets/common/product-placeholder.webp') }}');">
+                                        </div>
+                                        <label class="btn">
+                                            <i>
+                                                <img src="{{ asset('assets/common/edit.svg') }}" alt=""
+                                                    class="img-fluid">
+                                            </i>
+                                            <input type="file" name="image" id="changeImg" accept="image/*">
+                                            <input type="button" value="Upload" id="uploadButton">
+                                        </label>
+                                    </div>
+
+                                </div><!--end col-->
                                 <div class="mb-3">
                                     <label class="form-label">{{ __('general.title') }}<span
                                             class="text-danger">*</span></label>
@@ -47,7 +63,7 @@
                                     <div class="form-icon position-relative">
                                         <select name="platform_id" id="platform_id" class="form-control">
                                             @foreach ($platforms as $platform)
-                                            <option value="{{ $platform->id }}">{{ $platform->name }}</option>
+                                                <option value="{{ $platform->id }}">{{ $platform->name }}</option>
                                             @endforeach
                                         </select>
                                     </div>

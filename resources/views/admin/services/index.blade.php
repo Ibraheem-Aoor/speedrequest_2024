@@ -137,6 +137,8 @@
                             <thead>
                                 <tr>
                                     <th class="border-bottom p-3" style="min-width: 220px;">
+                                        {{ __('general.image') }}</th>
+                                    <th class="border-bottom p-3" style="min-width: 220px;">
                                         {{ __('general.title') }}</th>
                                     <th class="text-center border-bottom p-3" style="min-width: 200px;">
                                         {{ __('general.platform') }}
@@ -176,5 +178,5 @@
         <script src="{{ asset('assets/user/js/datatable-en.js') }}"></script>
     @endif
     <script src="https://cdn.datatables.net/2.0.0/js/dataTables.min.js"></script>
-    <script src="{{ asset('assets/user/js/admin/service.js') }}?v=0.01"></script>
+    <script src="{{ asset('assets/user/js/admin/service.js') }}?v=0.02"></script>
 @endpush

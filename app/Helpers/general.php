@@ -158,3 +158,34 @@ if (!function_exists('getEuWeekDays')) {
         return ['monday', 'tuesday', 'wednesday', 'thursday', 'friday', 'saturday', 'sunday'];
     }
 }
+/**
+ * Get Week Days According to EU
+ *
+ */
+if (!function_exists('getPromotionServiceKeyWord')) {
+    function getPromotionServiceKeyWord()
+    {
+        $pricing_keywords = [
+            "Exclusive",
+            "Elite",
+            "Premium",
+            "Luxury",
+            "Limited",
+            "Hot",
+            "Preferred",
+            "Signature",
+            "Ultimate",
+            "Top",
+            "Prime",
+            "Irresistible",
+            "Platinum",
+            "Glamorous",
+            "Dream",
+            "Iconic",
+            "Champion",
+            "Sizzling",
+            "Featured"
+        ];
+        return $pricing_keywords[array_rand(($pricing_keywords) ,1)];
+    }
+}

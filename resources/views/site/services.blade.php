@@ -50,11 +50,12 @@
                     <div class="col-md-6 col-lg-4 wow fadeInUp" data-wow-delay="0.1s">
                         <div class="price-item bg-light rounded text-center">
                             @if ($loop->last)
-                                <div class="pice-item-offer">Popular</div>
+                                <div class="pice-item-offer">{{ getPromotionServiceKeyWord() }}</div>
                             @endif
                             <div class="text-center text-dark border-bottom d-flex flex-column justify-content-center p-4"
                                 style="width: 100%; height: 160px;">
                                 <p class="fs-2 fw-bold text-uppercase mb-0">{{ $service->name }}</p>
+                                <p><img src="{{ getImageUrl($service->image)  }}" width="50px" height="50px" alt=""{{ $service->name }}  ></p>
                                 <div class="d-flex justify-content-center">
                                 </div>
                             </div>

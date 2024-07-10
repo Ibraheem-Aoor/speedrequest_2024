@@ -10,14 +10,15 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 class Service extends Model
 {
-    use HasFactory , HasStatus;
+    use HasFactory, HasStatus;
     protected $fillable = [
-                'name' ,
-                'features',
-                'platform_id',
-                'offer_url',
-                'task_title',
-                'status',
+        'image',
+        'name',
+        'features',
+        'platform_id',
+        'offer_url',
+        'task_title',
+        'status',
     ];
 
 
@@ -27,9 +28,9 @@ class Service extends Model
 
 
 
-    public function platform() : BelongsTo
+    public function platform(): BelongsTo
     {
-        return $this->belongsTo(Platform::class , 'platform_id');
+        return $this->belongsTo(Platform::class, 'platform_id');
     }
 
 }

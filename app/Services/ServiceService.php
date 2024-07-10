@@ -54,6 +54,10 @@ class ServiceService extends BaseModelService
     protected function getModelAttributes($request)
     {
         $data = $request->toArray();
+        if($request->hasFile('image'))
+        {
+            $data['image'] = saveImage('platforms' , $request->file('image'));
+        }
         $data['name'] = $data['title'];
         $data['status'] = @$data['status'] == 'on';
         $data['features'] = json_encode($data['features']);

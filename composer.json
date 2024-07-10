@@ -15,7 +15,6 @@
         "laravel/sanctum": "^3.0",
         "laravel/tinker": "^2.7",
         "laravel/ui": "^4.4",
-        "picqer/bol-retailer-php-client": "^10.1",
         "yajra/laravel-datatables": "^9.0"
     },
     "require-dev": {

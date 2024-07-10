@@ -77,7 +77,7 @@ class HomeController extends BaseSiteContoller
     {
         if (
             session()->has('has_visited_cpa_page') && session()->get('has_visited_cpa_page') == 'YES' &&
-            $request->ip() != session()->get('user_ip') && session()->has('current_order_id')
+            $request->headers->has('referer') && $request->headers->get('referer') != null && session()->has('current_order_id')
         ) {
             $data['order'] = Order::query()->where('id', session()->get('current_order_id'))->first();
             if(!isset($data['order']))

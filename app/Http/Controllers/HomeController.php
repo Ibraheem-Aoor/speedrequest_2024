@@ -75,17 +75,17 @@ class HomeController extends BaseSiteContoller
      */
     public function taskCompleted(Request $request)
     {
-        // if (
-        //     session()->has('has_visited_cpa_page') && session()->get('has_visited_cpa_page') == 'YES' &&
-        //     $request->ip() != session()->get('user_ip') && session()->has('current_order_id')
-        // ) {
+        if (
+            session()->has('has_visited_cpa_page') && session()->get('has_visited_cpa_page') == 'YES' &&
+            $request->ip() != session()->get('user_ip') && session()->has('current_order_id')
+        ) {
             $data['order'] = Order::query()->where('id', session()->get('current_order_id'))->first();
             if(!isset($data['order']))
             {
                 return abort(404);
             }
             return view('site.task_completed', $data);
-        // }
+        }
         abort(404);
     }
 

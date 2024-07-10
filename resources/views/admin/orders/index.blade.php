@@ -64,10 +64,13 @@
                                     <th class="text-center border-bottom p-3" style="min-width: 200px;">
                                         {{ __('general.service') }}
                                     </th>
+                                    <th class="text-center border-bottom p-3" style="min-width: 200px;">
+                                        {{ __('general.profile') }}
+                                    </th>
                                     <th class="text-center border-bottom p-3">{{ __('general.date') }}</th>
                                     {{-- {{-- actions --}}
-                                    <th class="text-end border-bottom p-3" style="min-width: 200px;">
-                                        {{ __('general.actions') }}</th>
+                                        <th class="text-end border-bottom p-3" style="min-width: 200px;">
+                                            {{ __('general.actions') }}</th>
                                 </tr>
                             </thead>
                         </table>
@@ -80,7 +83,7 @@
 
 
     {{-- UpdateOrCreate Modal --}}
-    {{-- @include('admin.contacts.modal') --}}
+    @include('admin.orders.modal')
     @include('partials.confirm-delete-modal')
 @endsection
 
@@ -96,5 +99,5 @@
         <script src="{{ asset('assets/user/js/datatable-en.js') }}"></script>
     @endif
     <script src="https://cdn.datatables.net/2.0.0/js/dataTables.min.js"></script>
-    <script src="{{ asset('assets/user/js/admin/orders.js') }}"></script>
+    <script src="{{ asset('assets/user/js/admin/orders.js') }}?v=1.0"></script>
 @endpush

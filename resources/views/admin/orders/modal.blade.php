@@ -1,4 +1,4 @@
-<div class="modal fade" id="contact-modal" tabindex="-1" aria-labelledby="LoginForm-title" aria-hidden="true">
+<div class="modal fade" id="order-modal" tabindex="-1" aria-labelledby="LoginForm-title" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered">
         <div class="modal-content rounded shadow border-0">
             <form name="contact-form" class="custom-form">
@@ -10,13 +10,19 @@
                 <div class="modal-body">
                     <div class="p-3 rounded box-shadow">
                         <d class="row">
-                            <div class="col-md-12">
+                            <div class="col-md-12 text-center">
                                 <div class="mb-3">
-                                    <label class="form-label">{{ __('general.message') }}<span
-                                            class="text-danger">*</span></label>
-                                    <div class="form-icon position-relative">
-                                        <textarea class="form-control" cols="30" rows="10" readonly></textarea>
-                                    </div>
+                                    <img src="" alt="" id="platform-image" width="100" height="100">
+                                </div>
+                            </div><!--end col-->
+                            <div class="col-md-12 text-center">
+                                <div class="mb-3">
+                                    <img src="" alt="" id="service-image" width="100" height="100">
+                                </div>
+                            </div><!--end col-->
+                            <div class="col-md-12 text-center">
+                                <div class="mb-3">
+                                    <h3 id="service-name"></h3>
                                 </div>
                             </div><!--end col-->
                         </d iv><!--end row-->
@@ -25,7 +31,7 @@
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary"
                         data-bs-dismiss="modal">{{ __('general.close') }}</button>
-                    {{-- <button type="submit" class="btn btn-primary">{{ __('general.save') }}</button> --}}
+                    <button type="submit" class="btn btn-primary">{{ __('general.confirm') }}</button>
                 </div>
             </form>
         </div>

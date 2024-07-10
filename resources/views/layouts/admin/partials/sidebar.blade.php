@@ -21,7 +21,10 @@
                 <a href="{{ route('admin.platform.index') }}"><i class="ti ti-user me-2"></i>{{ __('general.platforms') }}</a>
             </li>
             <li class="">
-                <a href="{{ route('admin.order.index') }}"><i class="ti ti-shopping-cart me-2"></i>{{ __('general.orders') }}</a>
+                <a href="{{ route('admin.order.index' , ['completed' => 1]) }}"><i class="ti ti-shopping-cart me-2"></i>{{ __('general.orders') }}</a>
+            </li>
+            <li class="">
+                <a href="{{ route('admin.order.index' , ['completed' => 0]) }}"><i class="ti ti-shopping-cart me-2"></i>{{ __('general.orders_incomplete') }}</a>
             </li>
             <li class="">
                 <a href="{{ route('admin.contacts.index') }}"><i class="ti ti-mail-opened me-2"></i>{{ __('general.contacts') }}</a>

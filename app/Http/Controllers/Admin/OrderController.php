@@ -12,6 +12,7 @@ use App\Http\Requests\Admin\StoreBarberRequest;
 use App\Http\Requests\Admin\StoreServiceRequest;
 use App\Http\Requests\Admin\UpdateBarberRequest;
 use App\Http\Requests\Admin\UpdateServiceRequest;
+use App\Models\Order;
 use App\Models\Service;
 use App\Services\BarberService;
 use App\Services\OrderService;
@@ -32,6 +33,11 @@ class OrderController extends BaseAdminController
         $data['table_data_url'] = route("{$this->base_route_path}.table" , $request->toArray());
         $data['route'] = $this->base_route_path;
         return view("{$this->base_view_path}.index", $data);
+    }
+
+    public function confirm(Order $order)
+    {
+        return $this->service->confirm($order);
     }
 
     public function destroy($id)

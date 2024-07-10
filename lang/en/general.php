@@ -75,4 +75,8 @@ return [
     'offer_url' => 'Offer Url',
     'features' => 'Featuers',
     'orders' => 'Orders',
+    'orders_incomplete' => 'Incomplete Orders',
+    'confirm_order' => 'Confirm Order: :order',
+    'confirm' => 'Confirm',
+    'profile' => 'Profile',
 ];

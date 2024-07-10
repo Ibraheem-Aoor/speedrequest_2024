@@ -43,6 +43,12 @@ function getTableColumns() {
             orderable: true,
         },
         {
+            data: 'profile',
+            name: 'profile',
+            searchable: true,
+            orderable: true,
+        },
+        {
             data: 'created_at',
             name: 'created_at',
             searchable: true,
@@ -58,21 +64,15 @@ function getTableColumns() {
 }
 
 
-$('#booking-modal').on('show.bs.modal', function (e) {
+$('#order-modal').on('show.bs.modal', function (e) {
     var btn = e.relatedTarget;
-    var headerTitle = btn.getAttribute('data-header-title');
-    var services = JSON.parse(btn.getAttribute('data-services'));
+    var action = btn.getAttribute('data-action');
+    var method = btn.getAttribute('data-method');
+    $(this).find('form').attr('action', action);
+    $(this).find('form').attr('method', method);
+    $("#modal-title").text(btn.getAttribute('data-header-title'));
+    $('#platform-image').prop('src' , btn.getAttribute('data-platform-image'));
+    $('#service-image').prop('src' , btn.getAttribute('data-service-image'));
+    $('#service-name').html(btn.getAttribute('data-service-name'));
 
-    $("#modal-title").text(headerTitle);
-
-    var tbody = $("#services-table-body");
-    tbody.empty(); // Clear previous content
-
-    services.forEach(function (service) {
-        var row = `<tr>
-            <td class="p-3">${service.title}</td>
-            <td class="p-3">${service.price}</td>
-        </tr>`;
-        tbody.append(row);
-    });
 });

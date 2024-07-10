@@ -76,8 +76,9 @@ Route::middleware('auth:admin')
         // Bookings
         Route::prefix('orders')->name('order.')->group(function () {
             Route::get('', [OrderController::class, 'index'])->name('index');
+            Route::post('/confirm/{order}', [OrderController::class, 'confirm'])->name('confirm');
             Route::get('/table-data', [OrderController::class, 'getTableData'])->name('table');
-            Route::delete('/destroy/{id}', [OrderController::class, 'destroy'])->name('destroy');
+            // Route::delete('/destroy/{id}', [OrderController::class, 'destroy'])->name('destroy');
         });
         // Work Hours
         Route::prefix('site-settings')->name('setting.')->group(function () {

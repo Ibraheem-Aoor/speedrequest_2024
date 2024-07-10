@@ -19,6 +19,7 @@ class Order extends Model
 
 
     public $transformer = OrderTransformer::class;
+    public $modal = '#order-modal';
 
     public function service() : BelongsTo
     {

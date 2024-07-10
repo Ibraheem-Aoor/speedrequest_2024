@@ -46,6 +46,20 @@ class OrderService extends BaseModelService
     }
 
 
+    public function confirm(Order $order)
+    {
+        try {
+            $order->update([
+                'has_completed_cpa' => true,
+            ]);
+        } catch (Throwable $e) {
+            Log::error("Fail with Updated in Model : " . get_class($this) . " erorr:" . $e->getMessage());
+            return generateResponse(status: false, message: __('response.faild_created'));
+        }
+        return generateResponse(status: true, message: __('response.update_success'), modal_to_hide: $order->modal, table_reload: true, table: '#myTable');
+    }
+
+
     public function delete($id)
     {
         try {
@@ -91,9 +105,8 @@ class OrderService extends BaseModelService
     {
         $query = $this->model::query()
             ->with('service.platform')
-            ->when($request->has('booking_id'), function ($query) use ($request) {
-                getAuthUser('admin')->unReadNotifications()->find($request->query('amp;notification_id'))?->markAsRead();
-                $query->where('id', $request->query('booking_id'));
+            ->when(request()->has('completed'), function ($query) use ($request) {
+                $query->where('has_completed_cpa', request()->query('completed'));
             });
         return DataTables::of($query)
             ->setTransformer($this->model->transformer)

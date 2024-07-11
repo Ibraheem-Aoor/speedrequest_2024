@@ -12,6 +12,7 @@ use App\Http\Controllers\Admin\AccountTreeController;
 use App\Http\Controllers\Admin\ContactController as UserContactController;
 use App\Http\Controllers\Site\BookingController;
 use App\Http\Requests\Site\IntresetedStudentRegisterRequest;
+use Shetabit\Visitor\Middlewares\LogVisits;
 
 /*
 |--------------------------------------------------------------------------
@@ -28,7 +29,7 @@ use App\Http\Requests\Site\IntresetedStudentRegisterRequest;
 Route::get('/', [HomeController::class, 'index'])->name('home');
 // Site Routes
 Route::group([
-    'as' => 'site.'
+    'as' => 'site.',
 ], function () {
     Route::get('services/{platform_id}', [HomeController::class, 'services'])->name('services');
     Route::get('offer/{service_id}', [HomeController::class, 'redirectToOffer'])->name('offer_redirect');

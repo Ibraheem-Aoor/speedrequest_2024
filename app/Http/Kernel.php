@@ -2,8 +2,10 @@
 
 namespace App\Http;
 
+use App\Http\Middleware\LogVisitMiddleware;
 use App\Http\Middleware\VpnNotAllowedMiddleWare;
 use Illuminate\Foundation\Http\Kernel as HttpKernel;
+use Shetabit\Visitor\Middlewares\LogVisits;
 
 class Kernel extends HttpKernel
 {
@@ -65,5 +67,6 @@ class Kernel extends HttpKernel
         'throttle' => \Illuminate\Routing\Middleware\ThrottleRequests::class,
         'verified' => \Illuminate\Auth\Middleware\EnsureEmailIsVerified::class,
         'vpn_blocked' => VpnNotAllowedMiddleWare::class,
+        'log_visits' => LogVisitMiddleware::class,
     ];
 }

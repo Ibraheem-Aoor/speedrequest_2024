@@ -74,7 +74,9 @@
         integrity="sha512-v2CJ7UaYy4JwqLDIrZUI/4hqeoQieOmAZNXBeQyjo21dadnwR+8ZaIJVT8EE2iyI61OV8e6M8PP2/4hpQINQ/g=="
         crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <!-- Main Js -->
-    <script src="{{ asset('assets/user/js/plugins.init.js') }}"></script>
+    <script src="{{ asset('assets/user/libs/apexcharts/apexcharts.min.js') }}"></script>
+
+    {{-- <script src="{{ asset('assets/user/js/plugins.init.js') }}"></script> --}}
     {{-- Toaster Js --}}
     <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
     <script src="{{ asset('assets/user/js/app.js') }}"></script>

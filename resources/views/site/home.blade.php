@@ -10,8 +10,8 @@
     <link href="https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c&display=swap" rel="stylesheet">
     <style>
         /**
-                                                      -- Start Import Fonts
-                                                    **/
+                                                          -- Start Import Fonts
+                                                        **/
         .baskervville-sc-regular {
             font-family: "M PLUS Rounded 1c", sans-serif;
             font-weight: 400;
@@ -25,8 +25,8 @@
         }
 
         /*
-                                                      -- End Import Fonts
-                                                    */
+                                                          -- End Import Fonts
+                                                        */
 
         * {
             padding: 0;
@@ -51,6 +51,7 @@
             font-size: 40px;
             font-weight: bold;
             margin-bottom: 20px;
+            margin-top: -12% !important;
         }
 
         .description {
@@ -351,10 +352,10 @@
         }
 
         /* ----------------------------------------------
-                                                * ----------------------------------------
-                                                * animation flip-vertical-left
-                                                * ----------------------------------------
-                                                */
+                                                    * ----------------------------------------
+                                                    * animation flip-vertical-left
+                                                    * ----------------------------------------
+                                                    */
         @-webkit-keyframes flip-vertical-left {
             0% {
                 -webkit-transform: rotateY(0);
@@ -552,6 +553,10 @@
         }
 
         @media (max-width: 768px) {
+
+            .logo {
+                margin-top: -20% !important;
+            }
 
             .logo img {
                 width: 100%;

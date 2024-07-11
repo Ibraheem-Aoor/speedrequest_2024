@@ -1,4 +1,5 @@
 @extends('layouts.site.master')
+@section('title'  , $order->service->platform->name)
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css" />
 <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet" />
 <link rel="preconnect" href="https://fonts.googleapis.com" />

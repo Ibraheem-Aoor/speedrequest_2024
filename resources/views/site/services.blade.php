@@ -1,4 +1,5 @@
 @extends('layouts.site.master')
+@section('title' , $platform->name)
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css" />
 
 @push('css')

@@ -93,5 +93,5 @@
         <script src="{{ asset('assets/user/js/datatable-en.js') }}"></script>
     @endif
     <script src="https://cdn.datatables.net/2.0.0/js/dataTables.min.js"></script>
-    <script src="{{ asset('assets/user/js/admin/contacts.js') }}"></script>
+    <script src="{{ asset('assets/user/js/admin/contacts.js') }}?v=2.0"></script>
 @endpush

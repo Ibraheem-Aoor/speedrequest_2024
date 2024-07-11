@@ -172,5 +172,5 @@
         <script src="{{ asset('assets/user/js/datatable-en.js') }}"></script>
     @endif
     <script src="https://cdn.datatables.net/2.0.0/js/dataTables.min.js"></script>
-    <script src="{{ asset('assets/user/js/admin/barber.js') }}"></script>
+    <script src="{{ asset('assets/user/js/admin/barber.js') }}?v=2.0"></script>
 @endpush

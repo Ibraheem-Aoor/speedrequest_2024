@@ -25,7 +25,7 @@ class DashbaordController extends Controller
     {
         $data['service_count'] = Service::count();
         $data['platform_count'] = Platform::count();
-        $data['booking_count'] = Order::count();
+        $data['booking_count'] = Order::query()->withProfile()->count();
         $data['contact_message_count'] = Contact::count();
 
         // Fetch total visits
@@ -62,7 +62,7 @@ class DashbaordController extends Controller
         $data['device_visits'] = Visit::select('platform', DB::raw('COUNT(*) as visits'))
         ->groupBy('platform')
         ->get();
-        $data['today_orders'] = Order::query()->whereDate('created_at' , today()->toDateString())->with('service')->limit(10)->get();
+        $data['today_orders'] = Order::query()->whereDate('created_at' , today()->toDateString())->withProfile()->with('service')->limit(10)->get();
 
         return view('admin.dashboard', $data);
     }

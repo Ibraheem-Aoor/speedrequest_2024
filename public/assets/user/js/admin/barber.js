@@ -2,6 +2,9 @@ $(document).ready(function () {
     // render The datatable if we are at a table page
     if (table_data_url !== 'undefined') {
         renderDataTable();
+        setTimeout(function() {
+            $('.dt-empty').html("No data available in table");
+        }, 3000);
     }
     // change image and preveiw
     $('#uploadButton').on('click', function () {

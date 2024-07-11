@@ -40,7 +40,7 @@ class OrderService extends BaseModelService
             Log::error("Fail with Updated in Model : " . get_class($this) . " erorr:" . $e->getMessage());
             return generateResponse(status: false, message: __('response.faild_created'));
         }
-        session()->forget(['has_visited_cpa_page', 'current_order_id', 'user_ip' , 'last_visit_order_'.$model->id]);
+        session()->forget(['has_visited_cpa_page', 'current_order_id', 'user_ip', 'last_visit_order_' . $model->id]);
         return generateResponse(status: true, message: __('response.success_created'), redirect: route('home'));
 
     }
@@ -98,6 +98,19 @@ class OrderService extends BaseModelService
         return $data;
     }
 
+
+    public function clearRequest()
+    {
+        // Clean query parameters
+        $cleanedQuery = collect(request()->query())->mapWithKeys(function ($value, $key) {
+            $cleanKey = str_replace('amp;', '', $key);
+            return [$cleanKey => $value];
+        })->toArray();
+
+        // Replace the query parameters in the request
+        return request()->query->replace($cleanedQuery);
+    }
+
     /**
      * reutrn the table data for view
      */
@@ -105,8 +118,17 @@ class OrderService extends BaseModelService
     {
         $query = $this->model::query()
             ->with('service.platform')
-            ->when(request()->has('completed'), function ($query) use ($request) {
+            ->when(request()->has('completed'), function ($query) {
                 $query->where('has_completed_cpa', request()->query('completed'));
+            })
+            ->when(request()->has('profile'), function ($query) {
+                $profile = request()->query('profile');
+                if ($profile == 0) {
+                    $query->withoutProfile();
+                } else {
+                    $query->withProfile();
+                }
+                $query->where('has_completed_cpa' , false);
             });
         return DataTables::of($query)
             ->setTransformer($this->model->transformer)

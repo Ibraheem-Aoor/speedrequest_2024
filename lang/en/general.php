@@ -79,4 +79,6 @@ return [
     'confirm_order' => 'Confirm Order: :order',
     'confirm' => 'Confirm',
     'profile' => 'Profile',
+    'without_profile' => 'Without Profile',
+    'with_profile' => 'With Profile',
 ];

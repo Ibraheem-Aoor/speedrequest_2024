@@ -3,17 +3,21 @@ $(document).ready(function () {
     if (table_data_url !== 'undefined') {
         renderDataTable();
     }
+    setTimeout(function() {
+        $('.dt-empty').html("No data available in table");
+    }, 3000);
 });
 
 /**
     * render Datatable
     */
 function renderDataTable() {
-    $('#myTable').DataTable({
+     $('#myTable').DataTable({
         processing: true,
         serverSide: true,
-        language: language,
-        ajax: table_data_url,
+        ajax:{
+            url: table_data_url,
+        },
         columns: getTableColumns(),
         order: [[
             3,
@@ -71,8 +75,14 @@ $('#order-modal').on('show.bs.modal', function (e) {
     $(this).find('form').attr('action', action);
     $(this).find('form').attr('method', method);
     $("#modal-title").text(btn.getAttribute('data-header-title'));
-    $('#platform-image').prop('src' , btn.getAttribute('data-platform-image'));
-    $('#service-image').prop('src' , btn.getAttribute('data-service-image'));
+    $('#platform-image').prop('src', btn.getAttribute('data-platform-image'));
+    $('#service-image').prop('src', btn.getAttribute('data-service-image'));
     $('#service-name').html(btn.getAttribute('data-service-name'));
 
 });
+
+$(document).on('change', 'select[name="profile"]', function (e) {
+    $('form[name="filter-form"]').submit();
+});
+
+

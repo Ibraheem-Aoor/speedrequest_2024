@@ -52,6 +52,22 @@
                     <h5 class="title mb-0">{{ __('general.orders') }}</h5>
                 </div>
                 <div class="p-4">
+                    @if (isset($is_completed) && !$is_completed)
+                        <form  name="filter-form">
+                            <div class="form-group">
+                                <div class="col-sm-4 mb-2">
+                                    <label for="">{{ __('general.profile') }}</label>
+                                    <select name="profile" class="form-control">
+                                        <option value="">--select--</option>
+                                        <option value="1" @selected(isset($profile) && $profile == 1)>✅ {{ __('general.with_profile') }}
+                                        </option>
+                                        <option value="0" @selected(isset($profile) && $profile == 0)>
+                                            ❌ {{ __('general.without_profile') }}</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </form>
+                    @endif
                     <div class="table-responsive shadow rounded p-4">
                         <table class="table table-center bg-white mb-0 table-bordered" id="myTable">
                             <thead>
@@ -69,8 +85,8 @@
                                     </th>
                                     <th class="text-center border-bottom p-3">{{ __('general.date') }}</th>
                                     {{-- {{-- actions --}}
-                                        <th class="text-end border-bottom p-3" style="min-width: 200px;">
-                                            {{ __('general.actions') }}</th>
+                                    <th class="text-end border-bottom p-3" style="min-width: 200px;">
+                                        {{ __('general.actions') }}</th>
                                 </tr>
                             </thead>
                         </table>
@@ -99,5 +115,5 @@
         <script src="{{ asset('assets/user/js/datatable-en.js') }}"></script>
     @endif
     <script src="https://cdn.datatables.net/2.0.0/js/dataTables.min.js"></script>
-    <script src="{{ asset('assets/user/js/admin/orders.js') }}?v=1.0"></script>
+    <script src="{{ asset('assets/user/js/admin/orders.js') }}?v=2.0"></script>
 @endpush

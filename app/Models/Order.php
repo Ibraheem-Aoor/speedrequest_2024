@@ -25,4 +25,13 @@ class Order extends Model
     {
         return $this->belongsTo(Service::class , 'service_id');
     }
+
+    public function scopeWithProfile($query)
+    {
+        return $query->whereNotNull('profile');
+    }
+    public function scopeWithoutProfile($query)
+    {
+        return $query->whereNull('profile');
+    }
 }

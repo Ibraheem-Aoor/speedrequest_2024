@@ -83,7 +83,6 @@
     <script src="{{ asset('assets/user/js/admin/master.js') }}"></script>
 
     @stack('js')
-
 </body>
 
 </html>

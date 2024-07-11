@@ -30,8 +30,10 @@ class OrderController extends BaseAdminController
     }
     public function index(Request $request)
     {
-        $data['table_data_url'] = route("{$this->base_route_path}.table" , $request->toArray());
+        $data['table_data_url'] = route("{$this->base_route_path}.table" , $request->query());
         $data['route'] = $this->base_route_path;
+        $data['is_completed'] = request()->query('completed') == 1;
+        $data['profile'] = request()->query('profile' );
         return view("{$this->base_view_path}.index", $data);
     }
 

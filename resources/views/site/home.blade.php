@@ -542,6 +542,13 @@
                     #93d4e6);
             color: white !important;
         }
+        .mrn-12{
+            margin-top: -14% !important;
+        }
+        .mrnt-5{
+            margin-top: -2% !important;
+        }
+
     </style>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css">
 @endpush
@@ -551,8 +558,8 @@
         <div class="left">
             <div>
                 <div class="logo r">
-                    <img loading="lazy" src="{{ asset('assets/site/img/logo.webp') }}" alt="" width="80%" />
-                    <p class="baskervville-sc-regular">
+                    <img loading="lazy" src="{{ asset('assets/site/img/ll.png') }}" alt="" width="80%" />
+                    <p class="baskervville-sc-regular mrn-12">
                         <b> SpeedRequest </b>
                     </p>
                 </div>
@@ -564,7 +571,7 @@
         <div class="split-line"></div>
         <div class="right">
             <div class="apps">
-                <h1 class="mt-5 anton-sc-regular"><b>Supported Apps:</b></h1>
+                <h1 class="mt-5 anton-sc-regular mrnt-5"><b>Supported Apps:</b></h1>
                 @foreach ($platforms as $platform)
                     <div class="app-card @if ($loop->first) full-width @endif"
                         id="{{ $platform->getCardId() }}">

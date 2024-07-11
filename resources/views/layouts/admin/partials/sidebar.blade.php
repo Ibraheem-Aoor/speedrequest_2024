@@ -1,12 +1,12 @@
 <!-- sidebar-wrapper -->
 <nav id="sidebar" class="sidebar-wrapper sidebar-colored">
     <div class="sidebar-content" data-simplebar style="height: calc(100% - 60px);">
-        <div class="sidebar-brand">
-            <a href="index.html">
-                <i class="fa fa-cut me-3"></i>{{ config('app.name', 'FEMILUX') }}
+        <div class="sidebar-brand text-center">
+            <a href="{{ route('admin.dashboard') }}" >
                 <span class="sidebar-colored d=none">
-                    <img src="{{ getAppLogo('light') }}" height="24" alt="">
+                    <img src="{{ getAppLogo('light') }}" height="150px" width="150px" alt="">
                 </span>
+
             </a>
         </div>
 

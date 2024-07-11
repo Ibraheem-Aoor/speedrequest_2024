@@ -51,8 +51,8 @@
                             <input type="hidden" name="guard" value="admin">
                             @csrf
                             <a href="index.html">
-                                <img loading="lazy" src="{{ asset('assets/user/images/logo-icon.png') }}"
-                                    class="avatar avatar-small mb-4 d-block mx-auto" alt="">
+                                <img loading="lazy" src="{{ getAppLogo() }}" 
+                                    class="avatar avatar-small mb-4 d-block mx-auto" alt="{{ config('app.name') }}">
                             </a>
                             <h5 class="mb-3 text-center">{{ __('auth.sign_in') }}</h5>
 

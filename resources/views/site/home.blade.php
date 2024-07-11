@@ -10,8 +10,8 @@
     <link href="https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c&display=swap" rel="stylesheet">
     <style>
         /**
-                                                  -- Start Import Fonts
-                                                **/
+                                                      -- Start Import Fonts
+                                                    **/
         .baskervville-sc-regular {
             font-family: "M PLUS Rounded 1c", sans-serif;
             font-weight: 400;
@@ -25,8 +25,8 @@
         }
 
         /*
-                                                  -- End Import Fonts
-                                                */
+                                                      -- End Import Fonts
+                                                    */
 
         * {
             padding: 0;
@@ -55,7 +55,7 @@
 
         .description {
             font-size: 18px;
-            margin-bottom: 40px;
+            margin-bottom: 5px;
         }
 
         .btn-light {
@@ -351,10 +351,10 @@
         }
 
         /* ----------------------------------------------
-                                            * ----------------------------------------
-                                            * animation flip-vertical-left
-                                            * ----------------------------------------
-                                            */
+                                                * ----------------------------------------
+                                                * animation flip-vertical-left
+                                                * ----------------------------------------
+                                                */
         @-webkit-keyframes flip-vertical-left {
             0% {
                 -webkit-transform: rotateY(0);
@@ -542,13 +542,26 @@
                     #93d4e6);
             color: white !important;
         }
-        .mrn-12{
+
+        .mrn-12 {
             margin-top: -14% !important;
         }
-        .mrnt-5{
+
+        .mrnt-5 {
             margin-top: -2% !important;
         }
 
+        @media (max-width: 768px) {
+
+            .logo img {
+                width: 100%;
+            }
+
+            .mrn-12 {
+                margin-top: -27% !important;
+                font-size: 20px !important;
+            }
+        }
     </style>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css">
 @endpush
@@ -558,7 +571,8 @@
         <div class="left">
             <div>
                 <div class="logo r">
-                    <img loading="lazy" src="{{ asset('assets/site/img/logo_offical.png') }}" alt="" width="50%" />
+                    <img loading="lazy" src="{{ asset('assets/site/img/logo_offical.png') }}" alt=""
+                        width="50%" />
                     <p class="baskervville-sc-regular mrn-12">
                         <b> SpeedRequest </b>
                     </p>

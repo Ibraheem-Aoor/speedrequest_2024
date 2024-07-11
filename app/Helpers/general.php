@@ -129,7 +129,7 @@ if (!function_exists('getAppLogo')) {
     function getAppLogo($type = 'dark')
     {
         return Cache::remember('logo_' . $type, now()->addDay(), function () use ($type) {
-            $logo = "logo_{$type}.webp";
+            $logo = "logo.png";
             return asset("assets/common/{$logo}");
         });
     }

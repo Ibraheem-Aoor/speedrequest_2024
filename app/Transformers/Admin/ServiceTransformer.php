@@ -18,8 +18,8 @@ class ServiceTransformer extends TransformerAbstract
         return [
             'id' => $barber->id,
             'image' => '<img src="' . getImageUrl($barber->image) . '" width="100" height="100"/>',
-            'name' => $barber->name,
-            'platform' => $barber->platform->name,
+            'name' => $barber?->name,
+            'platform' => $barber->platform?->name,
             'status' => $this->getStatusColumn($barber),
             'created_at' => date($barber->created_at),
             'actions' => $this->getActions($barber),

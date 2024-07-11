@@ -24,7 +24,7 @@ class ConfirmOrderRequest extends FormRequest
     public function rules()
     {
         return [
-            'profile' => 'required|url',
+            'profile' => 'required|string|max:255',
         ];
     }
 }

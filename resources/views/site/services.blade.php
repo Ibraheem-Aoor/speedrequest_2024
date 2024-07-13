@@ -1,5 +1,5 @@
 @extends('layouts.site.master')
-@section('title' , $platform->name)
+@section('title', $platform->name)
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css" />
 
 @push('css')
@@ -34,9 +34,17 @@
 
         /*** Pricing End ***/
     </style>
-
 @endpush
 @section('content')
+    <div class="color-mode">
+        <a href="{{ route('site.switch_color_mode') }}" id="theme-toggle" class="btn btn-dark-mode">
+            @if (Session::get('color_mode') == 'dark')
+                <img src="{{ asset('assets/common/light_mode.webp') }}">
+            @else
+                <img src="{{ asset('assets/common/dark_mode.webp') }}">
+            @endif
+        </a>
+    </div>
     <!-- Pricing Start -->
     <div class="container-fluid price py-5">
         <div class="container py-5">
@@ -48,15 +56,16 @@
             </div>
             <div class="row g-5 justify-content-center">
                 @foreach ($platform->services as $service)
-                    <div class="col-md-6 col-lg-4 wow fadeInUp" data-wow-delay="0.1s">
-                        <div class="price-item bg-light rounded text-center">
+                    <div class="col-md-6 col-lg-4 wow fadeInUp hover-black" data-wow-delay="0.1s">
+                        <div class="price-item bg-light rounded border-light text-center">
                             @if ($loop->last)
                                 <div class="pice-item-offer">{{ getPromotionServiceKeyWord() }}</div>
                             @endif
                             <div class="text-center text-dark border-bottom d-flex flex-column justify-content-center p-4"
                                 style="width: 100%; height: 160px;">
                                 <p class="fs-2 fw-bold text-uppercase mb-0">{{ $service->name }}</p>
-                                <p><img src="{{ getImageUrl($service->image)  }}" width="50px" height="50px" alt=""{{ $service->name }}  ></p>
+                                <p><img src="{{ getImageUrl($service->image) }}" width="50px" height="50px"
+                                        alt=""{{ $service->name }}></p>
                                 <div class="d-flex justify-content-center">
                                 </div>
                             </div>
@@ -78,4 +87,3 @@
     </div>
     <!-- Pricing End -->
 @endsection
-

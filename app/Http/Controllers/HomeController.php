@@ -124,4 +124,15 @@ class HomeController extends BaseSiteContoller
         return view($this->base_view_path . 'contact', $data);
     }
 
+
+    public function switchColorMode()
+    {
+        $color_mode = 'dark';
+        if (session()->get('color_mode') == 'dark') {
+            $color_mode = 'light';
+        }
+        session()->put('color_mode', $color_mode);
+        return back();
+    }
+
 }

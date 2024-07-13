@@ -88,6 +88,25 @@
         /* End Loader Style */
     </style>
     @stack('css')
+
+    <style>
+        /* DARK MODE */
+        .color-mode,
+        .color-mode img {
+            position: absolute;
+            top: 15px !important;
+            right: 2px;
+            z-index: 999 !important;
+        }
+
+        .color-mode img {
+            width: 160% !important;
+        }
+    </style>
+      @if (Session::get('color_mode') == 'dark')
+      <link rel="stylesheet" href="{{ asset('assets/user/css/home_colors.css') }}">
+  @endif
+
 </head>
 
 <body>
@@ -101,7 +120,15 @@
         </div>
     </div>
 
-
+    <div class="color-mode">
+        <a href="{{ route('site.switch_color_mode') }}" id="theme-toggle" class="btn btn-dark-mode">
+            @if (Session::get('color_mode') == 'dark')
+                <img src="{{ asset('assets/common/light_mode.webp') }}">
+            @else
+                <img src="{{ asset('assets/common/dark_mode.webp') }}">
+            @endif
+        </a>
+    </div>
     @yield('content')
 
     <!-- Copyright Start -->

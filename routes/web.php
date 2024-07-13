@@ -37,9 +37,5 @@ Route::group([
     Route::get('contact', [HomeController::class, 'contact'])->name('contact');
     Route::post('order-confirm/{order_id}', [HomeController::class, 'confirmOrder'])->name('confirm_order');
     Route::post('contact-submit', [ContactController::class, 'store'])->name('contact.submit');
-    // certifed freelancer courses
-    Route::prefix('booking')->name('booking.')->group(function () {
-        Route::post('/store', [BookingController::class, 'store'])->name('store');
-        Route::get('/fetch-available-times', [BookingController::class, 'fetchAvailableTimes'])->name('fetch_available_times');
-    });
+    Route::get('color/switch', [HomeController::class, 'switchColorMode'])->name('switch_color_mode');
 });

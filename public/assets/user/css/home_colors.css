@@ -1,0 +1,35 @@
+body{
+    background-color: black !important;
+}
+.split-screen {
+    background-color: black !important;
+    color: white !important;
+}
+.left{
+    background-image:  none !important;
+}
+.left ,.right, .steps-section,.bg-light {
+    background-color: black !important;
+    color: white !important;
+}
+
+.app-card {
+    background: white !important;
+}
+.card-text
+{
+    color: black !important;
+}
+.container-xxl.container{
+    color: white !important;
+}
+.text-dark{
+    color:white !important;
+}
+.border-light{
+    border:1px solid white !important;
+    border-radius: 0.4rem !important;
+}
+.border-light:hover{
+    color: black !important;
+}

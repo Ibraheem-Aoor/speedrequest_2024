@@ -21,50 +21,101 @@ use Shetabit\Visitor\Models\Visit;
 class DashbaordController extends Controller
 {
 
+
+
     public function dashboard()
     {
-        $data['service_count'] = Service::count();
-        $data['platform_count'] = Platform::count();
-        $data['booking_count'] = Order::query()->withProfile()->count();
-        $data['contact_message_count'] = Contact::count();
+        $data = $this->getDashboardCounts();
+        $monthlyVisits = $this->getMonthlyVisits();
+        $weeklyVisits = $this->getCurrentWeekVisits();
 
-        // Fetch total visits
-        $data['total_visits'] = Visit::count();
+        $data['monthly_visits'] = $monthlyVisits['data'];
+        $data['month_labels'] = $monthlyVisits['labels'];
+        $data['weekly_visits'] = $weeklyVisits['data'];
+        $data['week_labels'] = $weeklyVisits['labels'];
+        $data['browser_visits'] = $this->getBrowserVisits();
+        $data['device_visits'] = $this->getDeviceVisits();
+        $data['today_orders'] = $this->getTodayOrders();
 
-        // Fetch visits grouped by month for the current year
-        $monthly_visits = Visit::selectRaw('MONTH(created_at) as month, COUNT(*) as visits')
+        return view('admin.dashboard', $data);
+    }
+
+    private function getDashboardCounts()
+    {
+        return [
+            'service_count' => Service::count(),
+            'platform_count' => Platform::count(),
+            'booking_count' => Order::query()->withProfile()->count(),
+            'contact_message_count' => Contact::count(),
+            'total_visits' => Visit::count(),
+        ];
+    }
+
+    private function getMonthlyVisits()
+    {
+        $monthlyVisits = Visit::selectRaw('MONTH(created_at) as month, COUNT(*) as visits')
             ->whereYear('created_at', Carbon::now()->year)
             ->groupBy('month')
             ->orderBy('month')
             ->get();
 
-        // Prepare data for monthly visits
-        $month_labels = [];
-        $monthly_data = [];
+        $monthLabels = [];
+        $monthlyData = [];
 
-        // Initialize visits for each month to 0
         for ($i = 1; $i <= 12; $i++) {
-            $month_labels[] = Carbon::create()->month($i)->format('F');
-            $monthly_data[$i] = 0;
+            $monthLabels[] = Carbon::create()->month($i)->format('F');
+            $monthlyData[$i] = 0;
         }
 
-        // Fill in actual visit counts where available
-        foreach ($monthly_visits as $item) {
-            $monthly_data[$item->month] = $item->visits;
+        foreach ($monthlyVisits as $item) {
+            $monthlyData[$item->month] = $item->visits;
         }
 
-        // Assign data to the view
-        $data['monthly_visits'] = array_values($monthly_data); // Reset array keys for sequential data
-        $data['month_labels'] = $month_labels;
-        $data['browser_visits'] = Visit::select('browser', DB::raw('COUNT(*) as visits'))
-        ->groupBy('browser')
-        ->get();
-        $data['device_visits'] = Visit::select('platform', DB::raw('COUNT(*) as visits'))
-        ->groupBy('platform')
-        ->get();
-        $data['today_orders'] = Order::query()->whereDate('created_at' , today()->toDateString())->withProfile()->with('service')->limit(10)->get();
-
-        return view('admin.dashboard', $data);
+        return ['labels' => $monthLabels, 'data' => array_values($monthlyData)];
     }
+
+    private function getCurrentWeekVisits()
+    {
+        $currentWeekVisits = Visit::selectRaw('DAYOFWEEK(created_at) as day, COUNT(*) as visits')
+            ->whereBetween('created_at', [Carbon::now()->startOfWeek(), Carbon::now()->endOfWeek()])
+            ->groupBy('day')
+            ->orderBy('day')
+            ->get();
+
+        $weekLabels = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
+        $weeklyData = array_fill(0, 7, 0);
+
+        foreach ($currentWeekVisits as $item) {
+            $weeklyData[$item->day - 1] = $item->visits;
+        }
+
+        return ['labels' => $weekLabels, 'data' => $weeklyData];
+    }
+
+    private function getBrowserVisits()
+    {
+        return Visit::select('browser', DB::raw('COUNT(*) as visits'))
+            ->groupBy('browser')
+            ->get();
+    }
+
+    private function getDeviceVisits()
+    {
+        return Visit::select('platform', DB::raw('COUNT(*) as visits'))
+            ->groupBy('platform')
+            ->get();
+    }
+
+    private function getTodayOrders()
+    {
+        return Order::query()
+            ->whereDate('created_at', today()->toDateString())
+            ->withProfile()
+            ->with('service')
+            ->limit(10)
+            ->get();
+    }
+
+
 
 }

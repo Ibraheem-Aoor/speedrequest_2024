@@ -102,10 +102,10 @@
 
     {{-- Start Sales And Recent Orders --}}
     <div class="row">
-        <div class="col-xl-8 col-lg-7 mt-4">
+        <div class="col-xl-6 col-lg-6 col-sm-6 mt-4">
             <div class="card shadow border-0 p-4 pb-0 rounded">
                 <div class="d-flex justify-content-between">
-                    <h6 class="mb-0 fw-bold">Site Visits</h6>
+                    <h6 class="mb-0 fw-bold">Monthly Visits</h6>
 
                     <div class="mb-0 position-relative d-none">
                         <select class="form-select form-control" id="yearchart">
@@ -118,8 +118,27 @@
                 <div id="dashboard" class="apex-chart"></div>
             </div>
         </div><!--end col-->
+        <div class="col-xl-6 col-lg-6 col-sm-6 mt-4">
+            <div class="card shadow border-0 p-4 pb-0 rounded">
+                <div class="d-flex justify-content-between">
+                    <h6 class="mb-0 fw-bold">Weekly Visits</h6>
 
-        <div class="col-xl-4 col-lg-5 mt-4 rounded">
+                    <div class="mb-0 position-relative d-none">
+                        <select class="form-select form-control">
+                            <option selected>2021</option>
+                            <option value="2020">2020</option>
+                            <option value="2019">2019</option>
+                        </select>
+                    </div>
+                </div>
+                <div id="weekly-visits" class="apex-chart"></div>
+            </div>
+        </div><!--end col-->
+
+    </div><!--end row-->
+    {{-- End Sales And Recent Orders --}}
+    <div class="row mt-5">
+        <div class="col-xl-4 mt-4">
             <div class="col-xl-12 mt-4">
                 <div class="card rounded shadow border-0 p-4">
                     <div class="d-flex justify-content-between mb-4">
@@ -129,11 +148,8 @@
                 </div>
             </div><!--end col-->
         </div><!--end col-->
-    </div><!--end row-->
-    {{-- End Sales And Recent Orders --}}
-    <div class="row mt-5">
         {{-- Browser  Visists --}}
-        <div class="col-xl-6">
+        <div class="col-xl-4">
             <div class="card shadow border-0">
                 <div class="p-4 border-bottom">
                     <div class="d-flex justify-content-between">
@@ -184,7 +200,7 @@
 
         </div>
         {{-- Recent Orders --}}
-        <div class="col-xl-6">
+        <div class="col-xl-4">
             <div class="card shadow border-0">
                 <div class="p-4 border-bottom">
                     <div class="d-flex justify-content-between">
@@ -200,8 +216,8 @@
                             class="features key-feature d-flex align-items-center justify-content-between mt-4">
                             <div class="d-flex align-items-center">
                                 <div class="icon text-center rounded-circle me-3">
-                                    <img src="{{ getImageUrl($order->service->platform->logo) }}" class="browser-icon" width="50%" height="50%"
-                                        alt="{{ ($order->service->platform->name) }} Icon">
+                                    <img src="{{ getImageUrl($order->service->platform->logo) }}" class="browser-icon"
+                                        width="50%" height="50%" alt="{{ $order->service->platform->name }} Icon">
                                 </div>
                                 <div class="flex-1">
                                     <h6 class="mb-0 text-dark">{{ $order->service->platform->name }}</h6>
@@ -266,40 +282,86 @@
 
             var chart = new ApexCharts(document.querySelector("#dashboard"), options);
             chart.render();
-        });
 
-        // Chart 2
-        var deviceVisitsOptions = {
-            series: {!! json_encode($device_visits->pluck('visits')) !!},
-            chart: {
-                height: 350,
-                type: 'pie',
-            },
-            labels: {!! json_encode($device_visits->pluck('platform')) !!},
-            colors: ['#556ee6', '#34c38f', '#f46a6a', '#50a5f1', '#f1b44c'], // Customize colors as needed
-            legend: {
-                show: true,
-                position: 'bottom',
-                horizontalAlign: 'center',
-                verticalAlign: 'middle',
-                fontSize: '14px',
-                offsetX: 0,
-                offsetY: -10
-            },
-            responsive: [{
-                breakpoint: 600,
-                options: {
-                    chart: {
-                        height: 240
-                    },
-                    legend: {
+            // ---------------------
+            // Chart 2
+            var deviceVisitsOptions = {
+                series: {!! json_encode($device_visits->pluck('visits')) !!},
+                chart: {
+                    height: 350,
+                    type: 'pie',
+                },
+                labels: {!! json_encode($device_visits->pluck('platform')) !!},
+                colors: ['#556ee6', '#34c38f', '#f46a6a', '#50a5f1', '#f1b44c'], // Customize colors as needed
+                legend: {
+                    show: true,
+                    position: 'bottom',
+                    horizontalAlign: 'center',
+                    verticalAlign: 'middle',
+                    fontSize: '14px',
+                    offsetX: 0,
+                    offsetY: -10
+                },
+                responsive: [{
+                    breakpoint: 600,
+                    options: {
+                        chart: {
+                            height: 240
+                        },
+                        legend: {
+                            show: false
+                        }
+                    }
+                }]
+            };
+
+            var deviceVisitsChart = new ApexCharts(document.querySelector("#device-chart"), deviceVisitsOptions);
+            deviceVisitsChart.render();
+
+            // -----------------------------------------------
+
+            // Chart 1
+            var weeklyVistsiChartOptions = {
+                series: [{
+                    name: 'Visits',
+                    data: {!! json_encode($weekly_visits) !!} // weekly visits data
+                }],
+                chart: {
+                    height: 350,
+                    type: 'bar',
+                    toolbar: {
                         show: false
                     }
+                },
+                plotOptions: {
+                    bar: {
+                        horizontal: false,
+                        columnWidth: '55%',
+                        endingShape: 'rounded'
+                    },
+                },
+                dataLabels: {
+                    enabled: false
+                },
+                xaxis: {
+                    categories: {!! json_encode($week_labels) !!}, // week labels
+                },
+                colors: ['#556ee6'], // Customize the color as needed
+                grid: {
+                    borderColor: '#f1f1f1',
+                },
+                tooltip: {
+                    y: {
+                        formatter: function(val) {
+                            return val
+                        }
+                    }
                 }
-            }]
-        };
+            };
 
-        var deviceVisitsChart = new ApexCharts(document.querySelector("#device-chart"), deviceVisitsOptions);
-        deviceVisitsChart.render();
+            var weeklyVistitsChart = new ApexCharts(document.querySelector("#weekly-visits"),
+                weeklyVistsiChartOptions);
+            weeklyVistitsChart.render();
+        });
     </script>
 @endpush

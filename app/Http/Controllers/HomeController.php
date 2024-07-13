@@ -97,8 +97,8 @@ class HomeController extends BaseSiteContoller
             $lastVisitTime = session()->get('last_visit_order_' . $data['order']->id);
             $elapsedTime = time() - $lastVisitTime;
 
-            // Minimum time to stay (90 seconds)
-            $minimumStaySeconds = 90;
+            // Minimum time to stay (60 seconds)
+            $minimumStaySeconds = 60;
 
             // Check if the minimum stay time has been reached
             if ($elapsedTime >= $minimumStaySeconds) {

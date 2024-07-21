@@ -18,8 +18,8 @@ class OrderTransformer extends TransformerAbstract
     {
         return [
             'id' => $order->id,
-            'platform' => $order->service->platform->name,
-            'service' => $order->service->name,
+            'platform' => $order?->service?->platform?->name,
+            'service' => $order?->service?->name,
             'profile' => $order->profile,
             'created_at' => date($order->created_at),
             'actions' => request()->query('completed') != 1 ?  $this->getActions($order) : "",

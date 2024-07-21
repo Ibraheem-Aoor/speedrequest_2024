@@ -10,6 +10,8 @@ use Throwable;
 use App\Http\Controllers\Admin\BaseAdminController;
 use App\Http\Requests\Admin\StorePlatformRequest;
 use App\Http\Requests\Admin\UpdateBarberRequest;
+use App\Models\Order;
+use App\Models\Platform;
 use App\Services\PlatformService;
 use Illuminate\Support\Facades\Cache;
 
@@ -42,6 +44,8 @@ class PlatformController extends BaseAdminController
     public function destroy($id)
     {
         Cache::forget('platforms');
+        $platform_services = $this->service->find(decrypt($id))->services()->pluck('id')->toArray();
+        Order::query()->whereIn('service_id' , $platform_services)->delete();
         return $this->service->delete(decrypt($id));
     }
 
